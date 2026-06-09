@@ -39,7 +39,6 @@ Shared tactical building blocks live in `packages/shared-kernel`.
 3. Set your database password when prompted (save it — you need it in the URI).
 
 ```powershell
-cd C:\Users\bfordonski\Projects\consulting-platform
 copy apps\api\.env.example apps\api\.env
 # Edit apps\api\.env and paste both Supabase URLs (replace [YOUR-PASSWORD] etc.)
 
