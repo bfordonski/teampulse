@@ -1,0 +1,142 @@
+[
+    {
+      "name": "Anna Kowalczyk",
+      "position": "Senior Java Developer",
+      "keySkills": ["Microservices architecture", "Distributed systems", "Performance optimization", "Mentoring"],
+      "businessSkills": ["Banking domain expertise", "Stakeholder communication", "Ownership mindset", "Agile delivery"],
+      "technologySkills": ["Java", "Spring Boot", "Kafka", "PostgreSQL", "AWS", "Docker", "Kubernetes"],
+      "languages": [
+        {"language": "Polish", "level": "Native"},
+        {"language": "English", "level": "C1"}
+      ],
+      "industryExperience": ["Banking", "FinTech", "Payments"],
+      "certificates": ["AWS Certified Developer Associate"],
+      "education": "MSc in Computer Science – Warsaw University of Technology",
+      "summary": "Anna is a highly experienced backend engineer with over nine years of experience delivering scalable and secure enterprise systems within the banking and financial sector. She has led multiple initiatives involving microservices transformation, event-driven architecture, and cloud migration. Known for her strong problem-solving abilities and pragmatic approach, she actively contributes to system design and architectural decisions. She has also mentored junior developers and collaborated closely with product owners and business stakeholders to translate requirements into robust technical solutions.",
+      "projects": [
+        {
+          "type": "Core Banking System Modernization",
+          "description": "Led development of microservices replacing legacy monolithic banking core. Designed event-driven communication using Kafka and implemented scalable APIs used across multiple business units. Played a key role in system performance optimization and migration to AWS cloud infrastructure.",
+          "role": "Senior Backend Developer / Technical Lead"
+        },
+        {
+          "type": "Payment Gateway Integration Platform",
+          "description": "Built highly available integration layer connecting multiple payment providers and banking APIs. Focused on transaction security, high throughput processing, and resilience. Collaborated with cross-functional teams to ensure compliance with regulatory requirements.",
+          "role": "Backend Developer"
+        }
+      ],
+      "selectedClients": ["ING Bank", "PKO BP", "Santander"]
+    },
+    {
+      "name": "Piotr Nowak",
+      "position": "Frontend Developer",
+      "keySkills": ["UI architecture", "Performance optimization", "Responsive design", "Accessibility"],
+      "businessSkills": ["UX collaboration", "Product thinking", "Stakeholder demos"],
+      "technologySkills": ["React", "TypeScript", "Redux Toolkit", "Next.js", "CSS Modules", "Webpack"],
+      "languages": [
+        {"language": "Polish", "level": "Native"},
+        {"language": "English", "level": "B2"}
+      ],
+      "industryExperience": ["eCommerce", "Retail", "Marketplace"],
+      "certificates": ["Frontend Masters Advanced React"],
+      "education": "BSc in Computer Science – Poznań University of Technology",
+      "summary": "Piotr is a frontend developer with 4 years of experience building modern, responsive web applications with a strong focus on usability and performance. He has worked on large-scale eCommerce platforms handling high traffic and complex user journeys. He is comfortable collaborating closely with designers and backend developers to deliver intuitive and efficient solutions. Piotr consistently works on improving frontend performance metrics and implementing best practices in state management and component design.",
+      "projects": [
+        {
+          "type": "Large-scale eCommerce Platform",
+          "description": "Developed and optimized product listing and checkout flows in a high-traffic eCommerce platform. Improved page load times and SEO performance using Next.js and code-splitting. Worked closely with UX team to enhance customer journey and conversion rates.",
+          "role": "Frontend Developer"
+        },
+        {
+          "type": "B2B Marketplace",
+          "description": "Implemented dynamic dashboards and order management views for vendors. Focused on usability, accessibility compliance, and responsiveness across devices. Contributed to reusable component library and improved maintainability of the codebase.",
+          "role": "Frontend Developer"
+        }
+      ],
+      "selectedClients": ["Allegro", "OLX", "Decathlon"]
+    },
+    {
+      "name": "Tomasz Zieliński",
+      "position": "DevOps Engineer",
+      "keySkills": ["Cloud infrastructure", "CI/CD", "Infrastructure as code", "Monitoring & alerting"],
+      "businessSkills": ["Cost optimization", "Reliability engineering", "Incident management"],
+      "technologySkills": ["AWS", "Terraform", "Kubernetes", "Docker", "Jenkins", "Prometheus", "Grafana"],
+      "languages": [
+        {"language": "Polish", "level": "Native"},
+        {"language": "English", "level": "C1"}
+      ],
+      "industryExperience": ["FinTech", "SaaS", "Telecom"],
+      "certificates": ["AWS Certified DevOps Engineer Professional"],
+      "education": "MSc in Computer Science – AGH University of Science and Technology",
+      "summary": "Tomasz is a seasoned DevOps engineer with over six years of experience designing and maintaining cloud-native infrastructure. He specializes in automation and reliability, enabling teams to deliver software faster and more safely. He has extensive experience working with AWS environments, Kubernetes clusters, and implementing CI/CD pipelines. Tomasz actively drives improvements in system observability, incident response processes, and infrastructure cost control, contributing significantly to operational excellence.",
+      "projects": [
+        {
+          "type": "Cloud Migration Program",
+          "description": "Led migration of legacy systems from on-premise to AWS cloud, designing scalable and fault-tolerant infrastructure using Terraform and Kubernetes. Ensured high availability and smooth transition with zero downtime deployments and monitoring improvements.",
+          "role": "DevOps Engineer"
+        },
+        {
+          "type": "CI/CD Platform Implementation",
+          "description": "Designed and implemented enterprise-grade CI/CD pipelines across multiple development teams. Reduced deployment times and improved release frequency while ensuring quality and rollback mechanisms. Introduced monitoring and alerting standards.",
+          "role": "DevOps Engineer"
+        }
+      ],
+      "selectedClients": ["Santander", "T-Mobile", "Revolut"]
+    },
+    {
+      "name": "Karolina Mazur",
+      "position": "Data Scientist",
+      "keySkills": ["Machine learning", "Predictive modeling", "Data storytelling", "Feature engineering"],
+      "businessSkills": ["Data-driven decision making", "Stakeholder communication", "Experimentation"],
+      "technologySkills": ["Python", "Pandas", "NumPy", "TensorFlow", "Scikit-learn", "SQL", "Power BI"],
+      "languages": [
+        {"language": "Polish", "level": "Native"},
+        {"language": "English", "level": "C1"}
+      ],
+      "industryExperience": ["HealthTech", "Pharma", "Insurance"],
+      "certificates": ["Google Professional Data Engineer"],
+      "education": "MSc in Data Science – University of Warsaw",
+      "summary": "Karolina is a data scientist with 5 years of experience building predictive models and delivering analytical insights for healthcare and insurance domains. She has strong expertise in machine learning pipelines and translating complex data findings into business value. She collaborates closely with stakeholders to define use cases and validate results, ensuring practical application of models. Her work includes predictive analytics, risk modeling, and optimization of operational processes using data.",
+      "projects": [
+        {
+          "type": "Disease Prediction Model",
+          "description": "Developed machine learning models to predict patient risk profiles based on historical medical data. Improved early detection capabilities and supported clinical decision-making. Worked closely with domain experts to validate model assumptions and ensure interpretability.",
+          "role": "Data Scientist"
+        },
+        {
+          "type": "Insurance Risk Scoring System",
+          "description": "Designed and implemented a scoring engine for evaluating insurance risks. Built data pipelines and feature engineering processes, improving prediction accuracy and supporting underwriting decisions across multiple markets.",
+          "role": "Data Scientist"
+        }
+      ],
+      "selectedClients": ["Medicover", "LuxMed", "Allianz"]
+    },
+    {
+      "name": "Michał Kaczmarek",
+      "position": "Senior .NET Developer",
+      "keySkills": ["Backend architecture", "API design", "System integration", "Technical leadership"],
+      "businessSkills": ["Agile delivery", "Requirement analysis", "Stakeholder communication"],
+      "technologySkills": ["C#", ".NET Core", "Azure", "SQL Server", "REST APIs", "Docker"],
+      "languages": [
+        {"language": "Polish", "level": "Native"},
+        {"language": "English", "level": "B2"}
+      ],
+      "industryExperience": ["Insurance", "Logistics", "Enterprise Systems"],
+      "certificates": ["Microsoft Certified: Azure Developer Associate"],
+      "education": "MSc in Software Engineering – Wrocław University of Science and Technology",
+      "summary": "Michał is an experienced .NET developer with over seven years of hands-on experience in designing and implementing enterprise-grade backend systems. He has worked extensively on distributed architectures and integrations with external systems. Michał is known for writing clean, maintainable code and for his ability to bridge technical and business perspectives. He often takes a leading role in projects, supporting teams in making sound architectural decisions and ensuring high-quality delivery.",
+      "projects": [
+        {
+          "type": "Insurance Claims Management System",
+          "description": "Developed backend services for processing insurance claims, integrating multiple third-party data providers. Focused on reliability, data consistency, and compliance with business rules. Contributed to architecture design and overall system scalability.",
+          "role": "Senior Backend Developer"
+        },
+        {
+          "type": "Logistics Platform Integration",
+          "description": "Built integration layer connecting internal logistics systems with external partners. Designed APIs and handled high-volume data exchange, ensuring stability and performance across distributed services.",
+          "role": "Backend Developer"
+        }
+      ],
+      "selectedClients": ["PZU", "DHL", "Maersk"]
+    }
+  ]

@@ -1,0 +1,134 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum AvailabilityStatus {
+  AVAILABLE
+  PARTIALLY_AVAILABLE
+  UNAVAILABLE
+}
+
+enum TeamStatus {
+  DRAFT
+  ACTIVE
+  ARCHIVED
+}
+
+enum SkillCategory {
+  KEY
+  BUSINESS
+  TECHNOLOGY
+}
+
+model Candidate {
+  id               String             @id @default(uuid())
+  firstName        String
+  lastName         String
+  email            String             @unique
+  title            String
+  yearsExperience  Int
+  availability     AvailabilityStatus @default(AVAILABLE)
+  education        String?
+  summary          String?
+  cvFilePath       String?
+  skills           CandidateSkill[]
+  projects         CandidateProject[]
+  languages        CandidateLanguage[]
+  industries       CandidateIndustry[]
+  certificates     CandidateCertificate[]
+  selectedClients  CandidateClient[]
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+  teamMembers      TeamMember[]
+}
+
+model CandidateSkill {
+  id          String        @id @default(uuid())
+  candidateId String
+  candidate   Candidate     @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  name        String
+  category    SkillCategory
+  level       Int           @default(3)
+  yearsUsed   Int           @default(0)
+
+  @@unique([candidateId, name, category])
+}
+
+model CandidateLanguage {
+  id          String    @id @default(uuid())
+  candidateId String
+  candidate   Candidate @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  language    String
+  level       String
+
+  @@unique([candidateId, language])
+}
+
+model CandidateIndustry {
+  id          String    @id @default(uuid())
+  candidateId String
+  candidate   Candidate @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  name        String
+
+  @@unique([candidateId, name])
+}
+
+model CandidateCertificate {
+  id          String    @id @default(uuid())
+  candidateId String
+  candidate   Candidate @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  name        String
+
+  @@unique([candidateId, name])
+}
+
+model CandidateClient {
+  id          String    @id @default(uuid())
+  candidateId String
+  candidate   Candidate @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  name        String
+
+  @@unique([candidateId, name])
+}
+
+model CandidateProject {
+  id          String    @id @default(uuid())
+  candidateId String
+  candidate   Candidate @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  name        String
+  role        String?
+  client      String?
+  description String?
+  startYear   Int?
+  endYear     Int?
+}
+
+model Team {
+  id          String       @id @default(uuid())
+  name        String
+  description String?
+  status      TeamStatus   @default(DRAFT)
+  members     TeamMember[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model TeamMember {
+  id          String    @id @default(uuid())
+  teamId      String
+  team        Team      @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  candidateId String
+  candidate   Candidate @relation(fields: [candidateId], references: [id])
+  role        String
+  isLead      Boolean   @default(false)
+  joinedAt    DateTime  @default(now())
+
+  @@unique([teamId, candidateId])
+}
+
