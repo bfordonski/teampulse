@@ -43,7 +43,7 @@ export class AddTeamMemberUseCase {
       );
     }
 
-    const addResult = team.addMember(dto.candidateId, dto.role);
+    const addResult = team.addMemberFromCandidate(candidate, dto.role);
     if (addResult.isFailure) {
       throw new BadRequestException(addResult.error);
     }

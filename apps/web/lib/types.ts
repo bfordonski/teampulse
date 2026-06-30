@@ -4,12 +4,9 @@ export interface CandidateLanguage {
 }
 
 export interface CandidateProject {
-  type: string;
-  role?: string;
-  client?: string;
-  description?: string;
-  startYear?: number;
-  endYear?: number;
+  name: string;
+  description: string;
+  technologies?: string;
 }
 
 export interface CandidateSkill {
@@ -31,6 +28,7 @@ export interface Candidate {
   availability: string;
   education?: string;
   summary?: string;
+  profilePhotoUrl?: string;
   keySkills: string[];
   businessSkills: string[];
   technologySkills: string[];
@@ -44,10 +42,13 @@ export interface Candidate {
 
 export interface TeamMember {
   id: string;
+  sourceCandidateId: string;
+  /** @deprecated Use sourceCandidateId */
   candidateId: string;
   role: string;
   isLead: boolean;
   joinedAt: string;
+  profile: Candidate;
 }
 
 export interface Team {
@@ -57,3 +58,49 @@ export interface Team {
   status: string;
   members: TeamMember[];
 }
+
+export interface UpdateTeamMemberProfileInput {
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  title?: string;
+  yearsExperience?: number;
+  availability?: string;
+  education?: string;
+  summary?: string;
+  profilePhotoUrl?: string;
+  skills?: CandidateSkill[];
+  projects?: Array<{
+    name: string;
+    description: string;
+    technologies?: string;
+  }>;
+  languages?: CandidateLanguage[];
+  industryExperience?: string[];
+  certificates?: string[];
+  selectedClients?: string[];
+}
+
+export interface CreateCandidateInput {
+  firstName: string;
+  lastName: string;
+  email: string;
+  title: string;
+  yearsExperience: number;
+  availability?: string;
+  education?: string;
+  summary?: string;
+  profilePhotoUrl?: string;
+  skills?: CandidateSkill[];
+  languages?: CandidateLanguage[];
+  industryExperience?: string[];
+  certificates?: string[];
+  selectedClients?: string[];
+  projects?: Array<{
+    name: string;
+    description: string;
+    technologies?: string;
+  }>;
+}
+
+export type UpdateCandidateInput = CreateCandidateInput;

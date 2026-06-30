@@ -3,6 +3,7 @@
 import { useDraggable } from '@dnd-kit/core';
 import { CSS } from '@dnd-kit/utilities';
 import { GripVertical, Mail, Briefcase } from 'lucide-react';
+import { CandidateAvatar } from '@/components/candidates/candidate-avatar';
 import type { Candidate } from '@/lib/types';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
@@ -66,12 +67,15 @@ export function CandidatePanel({
             >
               <GripVertical className="h-5 w-5" />
             </button>
-          ) : (
-            <div className="mt-1 flex h-5 w-5 items-center justify-center rounded bg-muted text-xs font-semibold text-muted-foreground">
-              {candidate.firstName[0]}
-              {candidate.lastName[0]}
-            </div>
-          )}
+          ) : null}
+
+          <CandidateAvatar
+            firstName={candidate.firstName}
+            lastName={candidate.lastName}
+            profilePhotoUrl={candidate.profilePhotoUrl}
+            size="sm"
+            className={draggable ? 'mt-0.5' : undefined}
+          />
 
           <div className="min-w-0 flex-1 space-y-2">
             <div className="flex flex-wrap items-start justify-between gap-2">
@@ -126,6 +130,33 @@ export function CandidatePanel({
               <p className="line-clamp-2 text-xs text-muted-foreground">
                 {candidate.summary}
               </p>
+            )}
+
+            {(candidate.projects?.length ?? 0) > 0 && (
+              <div className="space-y-1.5">
+                <p className="text-xs font-medium text-foreground">Projects</p>
+                {candidate.projects!.slice(0, 2).map((project) => (
+                  <div
+                    key={`${project.name}-${project.description.slice(0, 20)}`}
+                    className="rounded-md border bg-muted/30 px-2 py-1.5"
+                  >
+                    <p className="text-xs font-medium">{project.name}</p>
+                    <p className="line-clamp-2 text-xs text-muted-foreground">
+                      {project.description}
+                    </p>
+                    {project.technologies && (
+                      <p className="mt-1 text-xs text-muted-foreground">
+                        {project.technologies}
+                      </p>
+                    )}
+                  </div>
+                ))}
+                {(candidate.projects?.length ?? 0) > 2 && (
+                  <p className="text-xs text-muted-foreground">
+                    +{(candidate.projects?.length ?? 0) - 2} more project(s)
+                  </p>
+                )}
+              </div>
             )}
 
             {footer}

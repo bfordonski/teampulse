@@ -19,6 +19,8 @@ import { CreateTeamUseCase } from '../../application/use-cases/create-team.use-c
 import { GetTeamUseCase } from '../../application/use-cases/get-team.use-case';
 import { ListTeamsUseCase } from '../../application/use-cases/list-teams.use-case';
 import { RemoveTeamMemberUseCase } from '../../application/use-cases/remove-team-member.use-case';
+import { UpdateTeamMemberProfileUseCase } from '../../application/use-cases/update-team-member-profile.use-case';
+import { UpdateTeamMemberProfileDto } from '../../application/dtos/update-team-member-profile.dto';
 
 @Controller('teams')
 export class TeamController {
@@ -31,6 +33,7 @@ export class TeamController {
     private readonly assignMemberRoleUseCase: AssignMemberRoleUseCase,
     private readonly activateTeamUseCase: ActivateTeamUseCase,
     private readonly updateTeamUseCase: UpdateTeamUseCase,
+    private readonly updateTeamMemberProfileUseCase: UpdateTeamMemberProfileUseCase,
   ) {}
 
   @Post()
@@ -73,6 +76,15 @@ export class TeamController {
     @Body() dto: AssignRoleDto,
   ) {
     return this.assignMemberRoleUseCase.execute(id, candidateId, dto);
+  }
+
+  @Patch(':id/members/:memberId/profile')
+  updateMemberProfile(
+    @Param('id') id: string,
+    @Param('memberId') memberId: string,
+    @Body() dto: UpdateTeamMemberProfileDto,
+  ) {
+    return this.updateTeamMemberProfileUseCase.execute(id, memberId, dto);
   }
 
   @Post(':id/activate')

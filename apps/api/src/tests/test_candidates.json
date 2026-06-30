@@ -1,142 +1,1181 @@
 [
     {
-      "name": "Anna Kowalczyk",
-      "position": "Senior Java Developer",
-      "keySkills": ["Microservices architecture", "Distributed systems", "Performance optimization", "Mentoring"],
-      "businessSkills": ["Banking domain expertise", "Stakeholder communication", "Ownership mindset", "Agile delivery"],
-      "technologySkills": ["Java", "Spring Boot", "Kafka", "PostgreSQL", "AWS", "Docker", "Kubernetes"],
-      "languages": [
-        {"language": "Polish", "level": "Native"},
-        {"language": "English", "level": "C1"}
-      ],
-      "industryExperience": ["Banking", "FinTech", "Payments"],
-      "certificates": ["AWS Certified Developer Associate"],
-      "education": "MSc in Computer Science – Warsaw University of Technology",
-      "summary": "Anna is a highly experienced backend engineer with over nine years of experience delivering scalable and secure enterprise systems within the banking and financial sector. She has led multiple initiatives involving microservices transformation, event-driven architecture, and cloud migration. Known for her strong problem-solving abilities and pragmatic approach, she actively contributes to system design and architectural decisions. She has also mentored junior developers and collaborated closely with product owners and business stakeholders to translate requirements into robust technical solutions.",
-      "projects": [
-        {
-          "type": "Core Banking System Modernization",
-          "description": "Led development of microservices replacing legacy monolithic banking core. Designed event-driven communication using Kafka and implemented scalable APIs used across multiple business units. Played a key role in system performance optimization and migration to AWS cloud infrastructure.",
-          "role": "Senior Backend Developer / Technical Lead"
-        },
-        {
-          "type": "Payment Gateway Integration Platform",
-          "description": "Built highly available integration layer connecting multiple payment providers and banking APIs. Focused on transaction security, high throughput processing, and resilience. Collaborated with cross-functional teams to ensure compliance with regulatory requirements.",
-          "role": "Backend Developer"
-        }
-      ],
-      "selectedClients": ["ING Bank", "PKO BP", "Santander"]
+        "name": "Anna Kowalczyk",
+        "position": "Senior Java Developer",
+        "keySkills": [
+            "Microservices architecture",
+            "Distributed systems",
+            "Performance optimization",
+            "Mentoring"
+        ],
+        "businessSkills": [
+            "Banking domain expertise",
+            "Stakeholder communication",
+            "Ownership mindset",
+            "Agile delivery"
+        ],
+        "technologySkills": [
+            "Java",
+            "Spring Boot",
+            "Kafka",
+            "PostgreSQL",
+            "AWS",
+            "Docker",
+            "Kubernetes"
+        ],
+        "languages": [
+            {
+                "language": "Polish",
+                "level": "Native"
+            },
+            {
+                "language": "English",
+                "level": "C1"
+            }
+        ],
+        "industryExperience": [
+            "Banking",
+            "FinTech",
+            "Payments"
+        ],
+        "certificates": [
+            "AWS Certified Developer Associate"
+        ],
+        "education": "MSc in Computer Science – Warsaw University of Technology",
+        "summary": "Anna is a highly experienced backend engineer with over nine years of experience delivering scalable and secure enterprise systems within the banking and financial sector. She has led multiple initiatives involving microservices transformation, event-driven architecture, and cloud migration. Known for her strong problem-solving abilities and pragmatic approach, she actively contributes to system design and architectural decisions. She has also mentored junior developers and collaborated closely with product owners and business stakeholders to translate requirements into robust technical solutions.",
+        "projects": [
+            {
+                "name": "Core Banking System Modernization",
+                "description": "Led development of microservices replacing legacy monolithic banking core. Designed event-driven communication using Kafka and implemented scalable APIs used across multiple business units. Played a key role in system performance optimization and migration to AWS cloud infrastructure.",
+                "technologies": "Java, Spring Boot, Kafka, PostgreSQL, AWS"
+            },
+            {
+                "name": "Payment Gateway Integration Platform",
+                "description": "Built highly available integration layer connecting multiple payment providers and banking APIs. Focused on transaction security, high throughput processing, and resilience. Collaborated with cross-functional teams to ensure compliance with regulatory requirements."
+            }
+        ],
+        "selectedClients": [
+            "ING Bank",
+            "PKO BP",
+            "Santander"
+        ]
     },
     {
-      "name": "Piotr Nowak",
-      "position": "Frontend Developer",
-      "keySkills": ["UI architecture", "Performance optimization", "Responsive design", "Accessibility"],
-      "businessSkills": ["UX collaboration", "Product thinking", "Stakeholder demos"],
-      "technologySkills": ["React", "TypeScript", "Redux Toolkit", "Next.js", "CSS Modules", "Webpack"],
-      "languages": [
-        {"language": "Polish", "level": "Native"},
-        {"language": "English", "level": "B2"}
-      ],
-      "industryExperience": ["eCommerce", "Retail", "Marketplace"],
-      "certificates": ["Frontend Masters Advanced React"],
-      "education": "BSc in Computer Science – Poznań University of Technology",
-      "summary": "Piotr is a frontend developer with 4 years of experience building modern, responsive web applications with a strong focus on usability and performance. He has worked on large-scale eCommerce platforms handling high traffic and complex user journeys. He is comfortable collaborating closely with designers and backend developers to deliver intuitive and efficient solutions. Piotr consistently works on improving frontend performance metrics and implementing best practices in state management and component design.",
-      "projects": [
-        {
-          "type": "Large-scale eCommerce Platform",
-          "description": "Developed and optimized product listing and checkout flows in a high-traffic eCommerce platform. Improved page load times and SEO performance using Next.js and code-splitting. Worked closely with UX team to enhance customer journey and conversion rates.",
-          "role": "Frontend Developer"
-        },
-        {
-          "type": "B2B Marketplace",
-          "description": "Implemented dynamic dashboards and order management views for vendors. Focused on usability, accessibility compliance, and responsiveness across devices. Contributed to reusable component library and improved maintainability of the codebase.",
-          "role": "Frontend Developer"
-        }
-      ],
-      "selectedClients": ["Allegro", "OLX", "Decathlon"]
+        "name": "Piotr Nowak",
+        "position": "Frontend Developer",
+        "keySkills": [
+            "UI architecture",
+            "Performance optimization",
+            "Responsive design",
+            "Accessibility"
+        ],
+        "businessSkills": [
+            "UX collaboration",
+            "Product thinking",
+            "Stakeholder demos"
+        ],
+        "technologySkills": [
+            "React",
+            "TypeScript",
+            "Redux Toolkit",
+            "Next.js",
+            "CSS Modules",
+            "Webpack"
+        ],
+        "languages": [
+            {
+                "language": "Polish",
+                "level": "Native"
+            },
+            {
+                "language": "English",
+                "level": "B2"
+            }
+        ],
+        "industryExperience": [
+            "eCommerce",
+            "Retail",
+            "Marketplace"
+        ],
+        "certificates": [
+            "Frontend Masters Advanced React"
+        ],
+        "education": "BSc in Computer Science – Poznań University of Technology",
+        "summary": "Piotr is a frontend developer with 4 years of experience building modern, responsive web applications with a strong focus on usability and performance. He has worked on large-scale eCommerce platforms handling high traffic and complex user journeys. He is comfortable collaborating closely with designers and backend developers to deliver intuitive and efficient solutions. Piotr consistently works on improving frontend performance metrics and implementing best practices in state management and component design.",
+        "projects": [
+            {
+                "name": "Large-scale eCommerce Platform",
+                "description": "Developed and optimized product listing and checkout flows in a high-traffic eCommerce platform. Improved page load times and SEO performance using Next.js and code-splitting. Worked closely with UX team to enhance customer journey and conversion rates.",
+                "technologies": "React, TypeScript, Next.js"
+            },
+            {
+                "name": "B2B Marketplace",
+                "description": "Implemented dynamic dashboards and order management views for vendors. Focused on usability, accessibility compliance, and responsiveness across devices. Contributed to reusable component library and improved maintainability of the codebase."
+            }
+        ],
+        "selectedClients": [
+            "Allegro",
+            "OLX",
+            "Decathlon"
+        ]
     },
     {
-      "name": "Tomasz Zieliński",
-      "position": "DevOps Engineer",
-      "keySkills": ["Cloud infrastructure", "CI/CD", "Infrastructure as code", "Monitoring & alerting"],
-      "businessSkills": ["Cost optimization", "Reliability engineering", "Incident management"],
-      "technologySkills": ["AWS", "Terraform", "Kubernetes", "Docker", "Jenkins", "Prometheus", "Grafana"],
-      "languages": [
-        {"language": "Polish", "level": "Native"},
-        {"language": "English", "level": "C1"}
-      ],
-      "industryExperience": ["FinTech", "SaaS", "Telecom"],
-      "certificates": ["AWS Certified DevOps Engineer Professional"],
-      "education": "MSc in Computer Science – AGH University of Science and Technology",
-      "summary": "Tomasz is a seasoned DevOps engineer with over six years of experience designing and maintaining cloud-native infrastructure. He specializes in automation and reliability, enabling teams to deliver software faster and more safely. He has extensive experience working with AWS environments, Kubernetes clusters, and implementing CI/CD pipelines. Tomasz actively drives improvements in system observability, incident response processes, and infrastructure cost control, contributing significantly to operational excellence.",
-      "projects": [
-        {
-          "type": "Cloud Migration Program",
-          "description": "Led migration of legacy systems from on-premise to AWS cloud, designing scalable and fault-tolerant infrastructure using Terraform and Kubernetes. Ensured high availability and smooth transition with zero downtime deployments and monitoring improvements.",
-          "role": "DevOps Engineer"
-        },
-        {
-          "type": "CI/CD Platform Implementation",
-          "description": "Designed and implemented enterprise-grade CI/CD pipelines across multiple development teams. Reduced deployment times and improved release frequency while ensuring quality and rollback mechanisms. Introduced monitoring and alerting standards.",
-          "role": "DevOps Engineer"
-        }
-      ],
-      "selectedClients": ["Santander", "T-Mobile", "Revolut"]
+        "name": "Tomasz Zieliński",
+        "position": "DevOps Engineer",
+        "keySkills": [
+            "Cloud infrastructure",
+            "CI/CD",
+            "Infrastructure as code",
+            "Monitoring & alerting"
+        ],
+        "businessSkills": [
+            "Cost optimization",
+            "Reliability engineering",
+            "Incident management"
+        ],
+        "technologySkills": [
+            "AWS",
+            "Terraform",
+            "Kubernetes",
+            "Docker",
+            "Jenkins",
+            "Prometheus",
+            "Grafana"
+        ],
+        "languages": [
+            {
+                "language": "Polish",
+                "level": "Native"
+            },
+            {
+                "language": "English",
+                "level": "C1"
+            }
+        ],
+        "industryExperience": [
+            "FinTech",
+            "SaaS",
+            "Telecom"
+        ],
+        "certificates": [
+            "AWS Certified DevOps Engineer Professional"
+        ],
+        "education": "MSc in Computer Science – AGH University of Science and Technology",
+        "summary": "Tomasz is a seasoned DevOps engineer with over six years of experience designing and maintaining cloud-native infrastructure. He specializes in automation and reliability, enabling teams to deliver software faster and more safely. He has extensive experience working with AWS environments, Kubernetes clusters, and implementing CI/CD pipelines. Tomasz actively drives improvements in system observability, incident response processes, and infrastructure cost control, contributing significantly to operational excellence.",
+        "projects": [
+            {
+                "name": "Cloud Migration Program",
+                "description": "Led migration of legacy systems from on-premise to AWS cloud, designing scalable and fault-tolerant infrastructure using Terraform and Kubernetes. Ensured high availability and smooth transition with zero downtime deployments and monitoring improvements.",
+                "technologies": "AWS, Terraform, Kubernetes"
+            },
+            {
+                "name": "CI/CD Platform Implementation",
+                "description": "Designed and implemented enterprise-grade CI/CD pipelines across multiple development teams. Reduced deployment times and improved release frequency while ensuring quality and rollback mechanisms. Introduced monitoring and alerting standards."
+            }
+        ],
+        "selectedClients": [
+            "Santander",
+            "T-Mobile",
+            "Revolut"
+        ]
     },
     {
-      "name": "Karolina Mazur",
-      "position": "Data Scientist",
-      "keySkills": ["Machine learning", "Predictive modeling", "Data storytelling", "Feature engineering"],
-      "businessSkills": ["Data-driven decision making", "Stakeholder communication", "Experimentation"],
-      "technologySkills": ["Python", "Pandas", "NumPy", "TensorFlow", "Scikit-learn", "SQL", "Power BI"],
-      "languages": [
-        {"language": "Polish", "level": "Native"},
-        {"language": "English", "level": "C1"}
-      ],
-      "industryExperience": ["HealthTech", "Pharma", "Insurance"],
-      "certificates": ["Google Professional Data Engineer"],
-      "education": "MSc in Data Science – University of Warsaw",
-      "summary": "Karolina is a data scientist with 5 years of experience building predictive models and delivering analytical insights for healthcare and insurance domains. She has strong expertise in machine learning pipelines and translating complex data findings into business value. She collaborates closely with stakeholders to define use cases and validate results, ensuring practical application of models. Her work includes predictive analytics, risk modeling, and optimization of operational processes using data.",
-      "projects": [
-        {
-          "type": "Disease Prediction Model",
-          "description": "Developed machine learning models to predict patient risk profiles based on historical medical data. Improved early detection capabilities and supported clinical decision-making. Worked closely with domain experts to validate model assumptions and ensure interpretability.",
-          "role": "Data Scientist"
-        },
-        {
-          "type": "Insurance Risk Scoring System",
-          "description": "Designed and implemented a scoring engine for evaluating insurance risks. Built data pipelines and feature engineering processes, improving prediction accuracy and supporting underwriting decisions across multiple markets.",
-          "role": "Data Scientist"
-        }
-      ],
-      "selectedClients": ["Medicover", "LuxMed", "Allianz"]
+        "name": "Karolina Mazur",
+        "position": "Data Scientist",
+        "keySkills": [
+            "Machine learning",
+            "Predictive modeling",
+            "Data storytelling",
+            "Feature engineering"
+        ],
+        "businessSkills": [
+            "Data-driven decision making",
+            "Stakeholder communication",
+            "Experimentation"
+        ],
+        "technologySkills": [
+            "Python",
+            "Pandas",
+            "NumPy",
+            "TensorFlow",
+            "Scikit-learn",
+            "SQL",
+            "Power BI"
+        ],
+        "languages": [
+            {
+                "language": "Polish",
+                "level": "Native"
+            },
+            {
+                "language": "English",
+                "level": "C1"
+            }
+        ],
+        "industryExperience": [
+            "HealthTech",
+            "Pharma",
+            "Insurance"
+        ],
+        "certificates": [
+            "Google Professional Data Engineer"
+        ],
+        "education": "MSc in Data Science – University of Warsaw",
+        "summary": "Karolina is a data scientist with 5 years of experience building predictive models and delivering analytical insights for healthcare and insurance domains. She has strong expertise in machine learning pipelines and translating complex data findings into business value. She collaborates closely with stakeholders to define use cases and validate results, ensuring practical application of models. Her work includes predictive analytics, risk modeling, and optimization of operational processes using data.",
+        "projects": [
+            {
+                "name": "Disease Prediction Model",
+                "description": "Developed machine learning models to predict patient risk profiles based on historical medical data. Improved early detection capabilities and supported clinical decision-making. Worked closely with domain experts to validate model assumptions and ensure interpretability.",
+                "technologies": "Python, TensorFlow, SQL"
+            },
+            {
+                "name": "Insurance Risk Scoring System",
+                "description": "Designed and implemented a scoring engine for evaluating insurance risks. Built data pipelines and feature engineering processes, improving prediction accuracy and supporting underwriting decisions across multiple markets."
+            }
+        ],
+        "selectedClients": [
+            "Medicover",
+            "LuxMed",
+            "Allianz"
+        ]
     },
     {
-      "name": "Michał Kaczmarek",
-      "position": "Senior .NET Developer",
-      "keySkills": ["Backend architecture", "API design", "System integration", "Technical leadership"],
-      "businessSkills": ["Agile delivery", "Requirement analysis", "Stakeholder communication"],
-      "technologySkills": ["C#", ".NET Core", "Azure", "SQL Server", "REST APIs", "Docker"],
-      "languages": [
-        {"language": "Polish", "level": "Native"},
-        {"language": "English", "level": "B2"}
-      ],
-      "industryExperience": ["Insurance", "Logistics", "Enterprise Systems"],
-      "certificates": ["Microsoft Certified: Azure Developer Associate"],
-      "education": "MSc in Software Engineering – Wrocław University of Science and Technology",
-      "summary": "Michał is an experienced .NET developer with over seven years of hands-on experience in designing and implementing enterprise-grade backend systems. He has worked extensively on distributed architectures and integrations with external systems. Michał is known for writing clean, maintainable code and for his ability to bridge technical and business perspectives. He often takes a leading role in projects, supporting teams in making sound architectural decisions and ensuring high-quality delivery.",
-      "projects": [
-        {
-          "type": "Insurance Claims Management System",
-          "description": "Developed backend services for processing insurance claims, integrating multiple third-party data providers. Focused on reliability, data consistency, and compliance with business rules. Contributed to architecture design and overall system scalability.",
-          "role": "Senior Backend Developer"
-        },
-        {
-          "type": "Logistics Platform Integration",
-          "description": "Built integration layer connecting internal logistics systems with external partners. Designed APIs and handled high-volume data exchange, ensuring stability and performance across distributed services.",
-          "role": "Backend Developer"
-        }
-      ],
-      "selectedClients": ["PZU", "DHL", "Maersk"]
+        "name": "Michał Kaczmarek",
+        "position": "Senior .NET Developer",
+        "keySkills": [
+            "Backend architecture",
+            "API design",
+            "System integration",
+            "Technical leadership"
+        ],
+        "businessSkills": [
+            "Agile delivery",
+            "Requirement analysis",
+            "Stakeholder communication"
+        ],
+        "technologySkills": [
+            "C#",
+            ".NET Core",
+            "Azure",
+            "SQL Server",
+            "REST APIs",
+            "Docker"
+        ],
+        "languages": [
+            {
+                "language": "Polish",
+                "level": "Native"
+            },
+            {
+                "language": "English",
+                "level": "B2"
+            }
+        ],
+        "industryExperience": [
+            "Insurance",
+            "Logistics",
+            "Enterprise Systems"
+        ],
+        "certificates": [
+            "Microsoft Certified: Azure Developer Associate"
+        ],
+        "education": "MSc in Software Engineering – Wrocław University of Science and Technology",
+        "summary": "Michał is an experienced .NET developer with over seven years of hands-on experience in designing and implementing enterprise-grade backend systems. He has worked extensively on distributed architectures and integrations with external systems. Michał is known for writing clean, maintainable code and for his ability to bridge technical and business perspectives. He often takes a leading role in projects, supporting teams in making sound architectural decisions and ensuring high-quality delivery.",
+        "projects": [
+            {
+                "name": "Insurance Claims Management System",
+                "description": "Developed backend services for processing insurance claims, integrating multiple third-party data providers. Focused on reliability, data consistency, and compliance with business rules. Contributed to architecture design and overall system scalability.",
+                "technologies": "C#, .NET Core, Azure, SQL Server"
+            },
+            {
+                "name": "Logistics Platform Integration",
+                "description": "Built integration layer connecting internal logistics systems with external partners. Designed APIs and handled high-volume data exchange, ensuring stability and performance across distributed services."
+            }
+        ],
+        "selectedClients": [
+            "PZU",
+            "DHL",
+            "Maersk"
+        ]
+    },
+    {
+        "name": "Jakub Wiśniewski",
+        "position": "Full-stack Developer",
+        "keySkills": [
+            "End-to-end delivery",
+            "API design",
+            "Component architecture",
+            "Code review"
+        ],
+        "businessSkills": [
+            "Agile delivery",
+            "Cross-team collaboration",
+            "Requirement refinement"
+        ],
+        "technologySkills": [
+            "TypeScript",
+            "NestJS",
+            "React",
+            "Next.js",
+            "PostgreSQL",
+            "Redis",
+            "Docker"
+        ],
+        "languages": [
+            { "language": "Polish", "level": "Native" },
+            { "language": "English", "level": "C1" }
+        ],
+        "industryExperience": ["SaaS", "FinTech", "HR Tech"],
+        "certificates": ["AWS Certified Cloud Practitioner"],
+        "education": "BSc in Computer Science – Gdańsk University of Technology",
+        "summary": "Jakub is a full-stack developer with five years of experience building SaaS products from database schema to polished UI. He works comfortably across NestJS backends and React frontends, with a strong focus on type safety and maintainable module boundaries. He regularly pairs with product managers to slice features into shippable increments.",
+        "projects": [
+            {
+                "name": "Multi-tenant SaaS Platform",
+                "description": "Built tenant-aware APIs and admin dashboards for a B2B subscription product. Implemented role-based access control, audit logging, and background job processing for billing workflows.",
+                "technologies": "TypeScript, NestJS, React, PostgreSQL, Redis"
+            },
+            {
+                "name": "Real-time Collaboration Module",
+                "description": "Delivered live document editing features using WebSockets and optimistic UI updates. Improved perceived performance and reduced conflict resolution issues for concurrent users."
+            }
+        ],
+        "selectedClients": ["Brainly", "Booksy", "DocPlanner"]
+    },
+    {
+        "name": "Ewa Dąbrowska",
+        "position": "Solution Architect",
+        "keySkills": [
+            "Enterprise architecture",
+            "Integration patterns",
+            "Technical governance",
+            "Stakeholder alignment"
+        ],
+        "businessSkills": [
+            "Pre-sales support",
+            "Cost-benefit analysis",
+            "Workshop facilitation"
+        ],
+        "technologySkills": [
+            "AWS",
+            "Kafka",
+            "REST",
+            "GraphQL",
+            "Kubernetes",
+            "Terraform",
+            "Java"
+        ],
+        "languages": [
+            { "language": "Polish", "level": "Native" },
+            { "language": "English", "level": "C2" }
+        ],
+        "industryExperience": ["Banking", "Insurance", "Public Sector"],
+        "certificates": ["TOGAF 9 Certified", "AWS Solutions Architect Professional"],
+        "education": "MSc in Computer Science – Jagiellonian University",
+        "summary": "Ewa is a solution architect with eleven years of experience designing large-scale systems for regulated industries. She translates business capabilities into target architectures, migration roadmaps, and integration standards. She is trusted in RFP processes and leads architecture review boards for delivery teams.",
+        "projects": [
+            {
+                "name": "Target Architecture for Digital Bank",
+                "description": "Defined microservices boundaries, event catalog, and API standards for a greenfield digital banking program. Coordinated migration from legacy middleware to cloud-native messaging.",
+                "technologies": "AWS, Kafka, Kubernetes, Terraform"
+            },
+            {
+                "name": "Insurance Policy Administration Modernization",
+                "description": "Created reference architecture for policy lifecycle services and external partner integrations. Reduced coupling between core systems and improved release independence for product teams."
+            }
+        ],
+        "selectedClients": ["mBank", "Generali", "Ministry of Finance"]
+    },
+    {
+        "name": "Marcin Lewandowski",
+        "position": "QA Automation Engineer",
+        "keySkills": [
+            "Test strategy",
+            "Automation frameworks",
+            "Quality gates",
+            "Regression prevention"
+        ],
+        "businessSkills": [
+            "Risk-based testing",
+            "Release coordination",
+            "Defect triage"
+        ],
+        "technologySkills": [
+            "Playwright",
+            "Cypress",
+            "Jest",
+            "Postman",
+            "GitHub Actions",
+            "Java",
+            "SQL"
+        ],
+        "languages": [
+            { "language": "Polish", "level": "Native" },
+            { "language": "English", "level": "B2" }
+        ],
+        "industryExperience": ["eCommerce", "Telecom", "Media"],
+        "certificates": ["ISTQB Advanced Test Automation Engineer"],
+        "education": "BSc in Information Technology – Łódź University of Technology",
+        "summary": "Marcin is a QA automation engineer with six years of experience raising quality in fast-moving product teams. He designs reliable end-to-end suites, integrates tests into CI pipelines, and coaches developers on testability. He balances automation depth with pragmatic manual exploration for edge cases.",
+        "projects": [
+            {
+                "name": "E2E Automation for Streaming Platform",
+                "description": "Introduced Playwright-based regression suite covering subscription flows, content playback, and payment edge cases. Cut release verification time by half while improving defect detection before production.",
+                "technologies": "Playwright, TypeScript, GitHub Actions"
+            },
+            {
+                "name": "API Contract Testing Initiative",
+                "description": "Implemented contract tests between mobile, web, and backend services. Reduced integration defects during parallel team delivery and standardized API change notifications."
+            }
+        ],
+        "selectedClients": ["Canal+", "Orange", "Empik"]
+    },
+    {
+        "name": "Agnieszka Wójcik",
+        "position": "Mobile Developer",
+        "keySkills": [
+            "Cross-platform delivery",
+            "App performance",
+            "Offline-first UX",
+            "Store release management"
+        ],
+        "businessSkills": [
+            "User research collaboration",
+            "Mobile analytics",
+            "Stakeholder demos"
+        ],
+        "technologySkills": [
+            "React Native",
+            "TypeScript",
+            "Expo",
+            "Firebase",
+            "REST APIs",
+            "Fastlane"
+        ],
+        "languages": [
+            { "language": "Polish", "level": "Native" },
+            { "language": "English", "level": "C1" }
+        ],
+        "industryExperience": ["FinTech", "Mobility", "HealthTech"],
+        "certificates": ["Google Associate Android Developer"],
+        "education": "MSc in Mobile Computing – Warsaw University of Technology",
+        "summary": "Agnieszka builds production mobile applications for FinTech and mobility clients using React Native. She focuses on smooth navigation, secure credential storage, and resilient offline behavior. She has shipped multiple apps to App Store and Google Play with staged rollout practices.",
+        "projects": [
+            {
+                "name": "Mobile Banking App Refresh",
+                "description": "Rebuilt customer-facing banking app with improved biometric login, transaction notifications, and accessibility support. Optimized startup time and reduced crash rate across older Android devices.",
+                "technologies": "React Native, TypeScript, Firebase"
+            },
+            {
+                "name": "Fleet Driver Application",
+                "description": "Developed driver workflow app with GPS tracking, digital proof of delivery, and offline sync. Integrated with backend dispatch APIs and push notification services."
+            }
+        ],
+        "selectedClients": ["Alior Bank", "Bolt", "Zdrowe Apetety"]
+    },
+    {
+        "name": "Łukasz Kamiński",
+        "position": "Security Engineer",
+        "keySkills": [
+            "Application security",
+            "Threat modeling",
+            "Identity management",
+            "Security automation"
+        ],
+        "businessSkills": [
+            "Compliance alignment",
+            "Incident response",
+            "Security awareness training"
+        ],
+        "technologySkills": [
+            "OWASP",
+            "OAuth2",
+            "OIDC",
+            "AWS IAM",
+            "Burp Suite",
+            "Python",
+            "Splunk"
+        ],
+        "languages": [
+            { "language": "Polish", "level": "Native" },
+            { "language": "English", "level": "C1" }
+        ],
+        "industryExperience": ["FinTech", "SaaS", "E-commerce"],
+        "certificates": ["CISSP", "AWS Security Specialty"],
+        "education": "MSc in Cybersecurity – Military University of Technology",
+        "summary": "Łukasz is a security engineer with eight years of experience embedding security into software delivery. He runs threat modeling sessions, hardens cloud configurations, and partners with developers to fix vulnerabilities early. He has led responses to production security incidents and improved detection coverage.",
+        "projects": [
+            {
+                "name": "OAuth2 Platform Hardening",
+                "description": "Reviewed and redesigned authentication flows for a multi-product SaaS platform. Introduced token rotation, scope minimization, and centralized session revocation.",
+                "technologies": "OAuth2, OIDC, AWS IAM, Python"
+            },
+            {
+                "name": "Cloud Security Baseline Program",
+                "description": "Defined secure defaults for AWS accounts, CI/CD secrets handling, and container image scanning. Automated compliance checks in deployment pipelines across twelve product teams."
+            }
+        ],
+        "selectedClients": ["PayU", "Asseco", "Allegro"]
+    },
+    {
+        "name": "Natalia Zając",
+        "position": "Platform Engineer",
+        "keySkills": [
+            "Developer experience",
+            "Internal platforms",
+            "GitOps",
+            "Service templates"
+        ],
+        "businessSkills": [
+            "Platform adoption",
+            "Documentation",
+            "Community of practice"
+        ],
+        "technologySkills": [
+            "Kubernetes",
+            "Helm",
+            "Argo CD",
+            "Terraform",
+            "Go",
+            "Prometheus",
+            "Backstage"
+        ],
+        "languages": [
+            { "language": "Polish", "level": "Native" },
+            { "language": "English", "level": "C1" }
+        ],
+        "industryExperience": ["SaaS", "FinTech", "Gaming"],
+        "certificates": ["Certified Kubernetes Administrator"],
+        "education": "BSc in Computer Science – Silesian University of Technology",
+        "summary": "Natalia builds internal developer platforms that help teams deploy services safely and quickly. She creates golden-path templates, self-service environments, and observability defaults. Her work reduces operational toil and standardizes how dozens of services run in production.",
+        "projects": [
+            {
+                "name": "Internal Developer Portal",
+                "description": "Launched Backstage-based portal with service catalog, scaffolding templates, and ownership metadata. Accelerated onboarding for new engineers and improved visibility of system dependencies.",
+                "technologies": "Backstage, Kubernetes, Helm, Argo CD"
+            },
+            {
+                "name": "GitOps Deployment Standard",
+                "description": "Rolled out GitOps workflows with Argo CD for fifty microservices. Standardized promotion paths from dev to production and integrated automated smoke tests after sync."
+            }
+        ],
+        "selectedClients": ["CD Projekt", "Monete", "Spotify Tech Hub"]
+    },
+    {
+        "name": "Katarzyna Szymańska",
+        "position": "Data Engineer",
+        "keySkills": [
+            "Data pipelines",
+            "Data modeling",
+            "Batch and streaming",
+            "Data quality"
+        ],
+        "businessSkills": [
+            "Analytics partnership",
+            "SLA management",
+            "Documentation"
+        ],
+        "technologySkills": [
+            "Python",
+            "Apache Spark",
+            "dbt",
+            "Airflow",
+            "BigQuery",
+            "Kafka",
+            "SQL"
+        ],
+        "languages": [
+            { "language": "Polish", "level": "Native" },
+            { "language": "English", "level": "C1" }
+        ],
+        "industryExperience": ["Retail", "AdTech", "Telecom"],
+        "certificates": ["Google Professional Data Engineer"],
+        "education": "MSc in Computer Science – University of Wrocław",
+        "summary": "Katarzyna designs and operates data pipelines that feed analytics, reporting, and machine learning use cases. She emphasizes reliable orchestration, tested transformations, and clear data contracts between producers and consumers. She has migrated legacy ETL jobs to modern cloud-native stacks.",
+        "projects": [
+            {
+                "name": "Retail Sales Data Platform",
+                "description": "Built nightly and near-real-time pipelines ingesting POS, eCommerce, and inventory feeds into a curated warehouse layer. Enabled unified customer analytics across online and store channels.",
+                "technologies": "Python, Airflow, BigQuery, dbt"
+            },
+            {
+                "name": "Streaming Events Pipeline",
+                "description": "Implemented Kafka-to-warehouse streaming for clickstream and campaign events. Added data quality checks and alerting for schema drift and late-arriving records."
+            }
+        ],
+        "selectedClients": ["LPP", "RTB House", "Play"]
+    },
+    {
+        "name": "Bartosz Król",
+        "position": "Backend Developer (Go)",
+        "keySkills": [
+            "High-throughput services",
+            "Concurrent programming",
+            "API performance",
+            "Observability"
+        ],
+        "businessSkills": [
+            "Technical estimation",
+            "On-call leadership",
+            "Code quality standards"
+        ],
+        "technologySkills": [
+            "Go",
+            "gRPC",
+            "PostgreSQL",
+            "Redis",
+            "Kafka",
+            "Prometheus",
+            "Docker"
+        ],
+        "languages": [
+            { "language": "Polish", "level": "Native" },
+            { "language": "English", "level": "B2" }
+        ],
+        "industryExperience": ["AdTech", "Gaming", "Logistics"],
+        "certificates": ["Linux Foundation Kubernetes Application Developer"],
+        "education": "BSc in Computer Science – Nicolaus Copernicus University",
+        "summary": "Bartosz specializes in low-latency backend services written in Go. He builds resilient APIs and workers that handle high request volumes with clear metrics and graceful degradation. He is comfortable profiling production bottlenecks and simplifying over-engineered modules.",
+        "projects": [
+            {
+                "name": "Real-time Bidding Service",
+                "description": "Developed sub-50ms bidding engine processing millions of requests per hour. Optimized memory allocation, connection pooling, and cache strategies for peak traffic events.",
+                "technologies": "Go, Redis, Kafka, Prometheus"
+            },
+            {
+                "name": "Shipment Tracking API",
+                "description": "Created gRPC-based tracking service integrating carrier webhooks and internal warehouse systems. Improved traceability and reduced support tickets for delayed deliveries."
+            }
+        ],
+        "selectedClients": ["Onet", "Ten Square Games", "InPost"]
+    },
+    {
+        "name": "Magdalena Piotrowska",
+        "position": "Python Backend Developer",
+        "keySkills": [
+            "Service design",
+            "Async processing",
+            "Testing discipline",
+            "Domain modeling"
+        ],
+        "businessSkills": [
+            "Product collaboration",
+            "Sprint planning",
+            "Knowledge sharing"
+        ],
+        "technologySkills": [
+            "Python",
+            "FastAPI",
+            "Django",
+            "Celery",
+            "PostgreSQL",
+            "Redis",
+            "Docker"
+        ],
+        "languages": [
+            { "language": "Polish", "level": "Native" },
+            { "language": "English", "level": "C1" },
+            { "language": "German", "level": "B1" }
+        ],
+        "industryExperience": ["HealthTech", "EdTech", "Marketplace"],
+        "certificates": ["Python Institute PCPP"],
+        "education": "MSc in Applied Computer Science – AGH University of Science and Technology",
+        "summary": "Magdalena builds Python backends for products that require dependable workflows and clear domain boundaries. She uses FastAPI, SQLAlchemy, and Celery to deliver features with strong test coverage. She enjoys refactoring legacy Django monoliths into maintainable service modules.",
+        "projects": [
+            {
+                "name": "Patient Portal Backend",
+                "description": "Implemented appointment booking, lab results delivery, and secure messaging APIs for a healthcare provider. Ensured GDPR-compliant audit trails and role-based data access.",
+                "technologies": "Python, FastAPI, PostgreSQL, Celery"
+            },
+            {
+                "name": "Online Learning Platform API",
+                "description": "Built course enrollment, progress tracking, and payment webhook handlers. Introduced background jobs for certificate generation and email notifications."
+            }
+        ],
+        "selectedClients": ["Enel-Med", "Coursera Partner", "Vinted"]
+    },
+    {
+        "name": "Rafał Jankowski",
+        "position": "Cloud Engineer (Azure)",
+        "keySkills": [
+            "Cloud landing zones",
+            "Networking",
+            "Identity integration",
+            "Cost control"
+        ],
+        "businessSkills": [
+            "Migration planning",
+            "Vendor coordination",
+            "Runbook authoring"
+        ],
+        "technologySkills": [
+            "Azure",
+            "ARM/Bicep",
+            "Terraform",
+            "AKS",
+            "Azure DevOps",
+            "PowerShell",
+            "Entra ID"
+        ],
+        "languages": [
+            { "language": "Polish", "level": "Native" },
+            { "language": "English", "level": "B2" }
+        ],
+        "industryExperience": ["Manufacturing", "Energy", "Public Sector"],
+        "certificates": ["Microsoft Certified: Azure Solutions Architect Expert"],
+        "education": "BSc in Telecommunications – Poznań University of Technology",
+        "summary": "Rafał implements and operates Azure environments for enterprise clients migrating from on-premise data centers. He designs hub-spoke networks, hybrid connectivity, and automated provisioning pipelines. He tracks cloud spend and recommends right-sizing without compromising reliability.",
+        "projects": [
+            {
+                "name": "Azure Landing Zone Rollout",
+                "description": "Deployed standardized subscriptions, policies, and networking for a manufacturing group. Enabled self-service AKS clusters with guardrails and centralized logging.",
+                "technologies": "Azure, Terraform, AKS, Entra ID"
+            },
+            {
+                "name": "Hybrid Identity Integration",
+                "description": "Integrated on-premise Active Directory with Entra ID for single sign-on across SaaS and custom applications. Reduced password-related support load and improved access reviews."
+            }
+        ],
+        "selectedClients": ["Grupa Azoty", "PGE", "Polish Post"]
+    },
+    {
+        "name": "Joanna Grabowska",
+        "position": "Engineering Tech Lead",
+        "keySkills": [
+            "Team leadership",
+            "Technical roadmap",
+            "Architecture decisions",
+            "Mentoring"
+        ],
+        "businessSkills": [
+            "Delivery forecasting",
+            "Stakeholder management",
+            "Hiring support"
+        ],
+        "technologySkills": [
+            "Java",
+            "Spring Boot",
+            "React",
+            "PostgreSQL",
+            "Kafka",
+            "AWS",
+            "Kubernetes"
+        ],
+        "languages": [
+            { "language": "Polish", "level": "Native" },
+            { "language": "English", "level": "C1" }
+        ],
+        "industryExperience": ["FinTech", "Payments", "SaaS"],
+        "certificates": ["Scrum Professional Product Owner I"],
+        "education": "MSc in Software Engineering – Warsaw University of Technology",
+        "summary": "Joanna leads a squad of eight engineers delivering payment and billing capabilities for a FinTech scale-up. She balances hands-on code reviews with roadmap planning, unblocking teams and maintaining engineering standards. She has grown two mid-level developers into tech leads.",
+        "projects": [
+            {
+                "name": "Subscription Billing Engine",
+                "description": "Led team building recurring billing, dunning, and invoice generation services. Coordinated cross-team API contracts and phased rollout to enterprise merchants.",
+                "technologies": "Java, Spring Boot, Kafka, PostgreSQL"
+            },
+            {
+                "name": "Merchant Dashboard Rewrite",
+                "description": "Directed frontend modernization from legacy jQuery to React with shared design system. Improved merchant self-service and reduced support escalations."
+            }
+        ],
+        "selectedClients": ["Stripe Partner", "Przelewy24", "Tpay"]
+    },
+    {
+        "name": "Damian Kowalski",
+        "position": "Site Reliability Engineer",
+        "keySkills": [
+            "Reliability engineering",
+            "Incident management",
+            "Capacity planning",
+            "Automation"
+        ],
+        "businessSkills": [
+            "Blameless postmortems",
+            "On-call process design",
+            "SLI/SLO definition"
+        ],
+        "technologySkills": [
+            "Kubernetes",
+            "Prometheus",
+            "Grafana",
+            "PagerDuty",
+            "Terraform",
+            "Python",
+            "Linux"
+        ],
+        "languages": [
+            { "language": "Polish", "level": "Native" },
+            { "language": "English", "level": "C1" }
+        ],
+        "industryExperience": ["SaaS", "Streaming", "Cloud Infrastructure"],
+        "certificates": ["Google SRE Fundamentals", "CKA"],
+        "education": "BSc in Computer Science – University of Gdańsk",
+        "summary": "Damian improves production reliability for high-traffic SaaS products. He defines SLOs, builds alerting that pages humans only when necessary, and automates remediation for common failure modes. He has reduced mean time to recovery through runbooks and game days.",
+        "projects": [
+            {
+                "name": "SLO Framework Implementation",
+                "description": "Introduced SLI/SLO dashboards and error budget policies for core customer journeys. Aligned product and engineering priorities based on reliability trade-offs.",
+                "technologies": "Prometheus, Grafana, PagerDuty"
+            },
+            {
+                "name": "Auto-remediation for Kubernetes",
+                "description": "Built controllers and scripts to restart unhealthy pods, scale nodes, and drain noisy neighbors. Decreased overnight pages and improved availability during traffic spikes."
+            }
+        ],
+        "selectedClients": ["Spotify", "LiveChat", "Cloudflare Partner"]
+    },
+    {
+        "name": "Aleksandra Nowicka",
+        "position": "Senior React Developer",
+        "keySkills": [
+            "Design systems",
+            "State management",
+            "Web performance",
+            "Accessibility"
+        ],
+        "businessSkills": [
+            "Design partnership",
+            "Frontend guild leadership",
+            "Demo culture"
+        ],
+        "technologySkills": [
+            "React",
+            "TypeScript",
+            "TanStack Query",
+            "Zustand",
+            "Storybook",
+            "Vite",
+            "Tailwind CSS"
+        ],
+        "languages": [
+            { "language": "Polish", "level": "Native" },
+            { "language": "English", "level": "C1" }
+        ],
+        "industryExperience": ["SaaS", "HR Tech", "PropTech"],
+        "certificates": ["Certified Professional in Accessibility Core Competencies"],
+        "education": "BSc in Computer Science – SWPS University",
+        "summary": "Aleksandra crafts complex React applications with emphasis on reusable components and accessible interactions. She maintains design system libraries and guides teams on performance budgets and testing strategies. Her UIs consistently score well on Core Web Vitals.",
+        "projects": [
+            {
+                "name": "Design System for HR SaaS",
+                "description": "Authored component library with Storybook documentation, theming, and accessibility tests. Accelerated feature delivery across four frontend squads.",
+                "technologies": "React, TypeScript, Storybook, Tailwind CSS"
+            },
+            {
+                "name": "Property Management Dashboard",
+                "description": "Built data-dense dashboards with virtualization and optimistic updates for lease workflows. Improved task completion time for property managers."
+            }
+        ],
+        "selectedClients": ["Deel", "HRS", "Proptech Labs"]
+    },
+    {
+        "name": "Szymon Walczak",
+        "position": "Integration Architect",
+        "keySkills": [
+            "Enterprise integration",
+            "Message routing",
+            "API mediation",
+            "Legacy modernization"
+        ],
+        "businessSkills": [
+            "Vendor evaluation",
+            "Integration governance",
+            "Technical workshops"
+        ],
+        "technologySkills": [
+            "MuleSoft",
+            "Apache Camel",
+            "Kafka",
+            "REST",
+            "SOAP",
+            "XML",
+            "Java"
+        ],
+        "languages": [
+            { "language": "Polish", "level": "Native" },
+            { "language": "English", "level": "B2" }
+        ],
+        "industryExperience": ["Banking", "Utilities", "Government"],
+        "certificates": ["MuleSoft Certified Integration Architect"],
+        "education": "MSc in Information Systems – University of Economics in Katowice",
+        "summary": "Szymon designs integration layers connecting core banking, ERP, and partner systems. He selects appropriate patterns—sync APIs, messaging, or file exchange—and documents canonical data models. He has untangled brittle point-to-point integrations into manageable platforms.",
+        "projects": [
+            {
+                "name": "Banking Integration Hub",
+                "description": "Architected central integration platform for account, payment, and CRM systems. Standardized error handling, retries, and correlation IDs across fifty interfaces.",
+                "technologies": "MuleSoft, Kafka, Java"
+            },
+            {
+                "name": "Utility Meter Data Exchange",
+                "description": "Built reliable ingestion pipeline for smart meter readings from multiple vendors. Enabled near-real-time billing adjustments and anomaly detection."
+            }
+        ],
+        "selectedClients": ["BNP Paribas", "TAURON", "GovTech Polska"]
+    },
+    {
+        "name": "Monika Cieślak",
+        "position": "MLOps Engineer",
+        "keySkills": [
+            "Model deployment",
+            "Experiment tracking",
+            "Feature pipelines",
+            "Model monitoring"
+        ],
+        "businessSkills": [
+            "ML platform adoption",
+            "Cross-functional alignment",
+            "Documentation"
+        ],
+        "technologySkills": [
+            "Python",
+            "MLflow",
+            "Kubeflow",
+            "Docker",
+            "Kubernetes",
+            "Airflow",
+            "AWS SageMaker"
+        ],
+        "languages": [
+            { "language": "Polish", "level": "Native" },
+            { "language": "English", "level": "C1" }
+        ],
+        "industryExperience": ["Retail", "Manufacturing", "FinTech"],
+        "certificates": ["AWS Machine Learning Specialty"],
+        "education": "MSc in Artificial Intelligence – University of Warsaw",
+        "summary": "Monika bridges data science and production engineering by building pipelines that train, deploy, and monitor machine learning models reliably. She automates retraining triggers and drift detection while keeping models auditable for compliance teams.",
+        "projects": [
+            {
+                "name": "Recommendation Model Platform",
+                "description": "Deployed batch and online inference paths for product recommendation models. Integrated A/B testing hooks and performance dashboards for data scientists.",
+                "technologies": "Python, MLflow, Kubernetes, AWS SageMaker"
+            },
+            {
+                "name": "Manufacturing Defect Detection Pipeline",
+                "description": "Operationalized computer vision models on edge gateways with centralized monitoring. Reduced false positives and improved feedback loops for model retraining."
+            }
+        ],
+        "selectedClients": ["Żabka", "Fiat", "mBank"]
+    },
+    {
+        "name": "Filip Górski",
+        "position": "Systems Developer (Rust)",
+        "keySkills": [
+            "Systems programming",
+            "Memory safety",
+            "Performance tuning",
+            "Low-level debugging"
+        ],
+        "businessSkills": [
+            "Technical spikes",
+            "Proof of concept delivery",
+            "Code review"
+        ],
+        "technologySkills": [
+            "Rust",
+            "C++",
+            "Linux",
+            "gRPC",
+            "Protobuf",
+            "Redis",
+            "Tokio"
+        ],
+        "languages": [
+            { "language": "Polish", "level": "Native" },
+            { "language": "English", "level": "B2" }
+        ],
+        "industryExperience": ["Cybersecurity", "Networking", "Gaming"],
+        "certificates": ["Linux Professional Institute LPIC-2"],
+        "education": "BSc in Computer Science – Wrocław University of Science and Technology",
+        "summary": "Filip writes high-performance systems components in Rust for security and networking products. He focuses on predictable latency, safe concurrency, and thorough benchmarking before production rollout. He also maintains FFI boundaries with legacy C++ modules.",
+        "projects": [
+            {
+                "name": "Packet Inspection Engine",
+                "description": "Rewrote critical path of network inspection tool from C++ to Rust. Achieved lower memory usage and eliminated several classes of concurrency bugs.",
+                "technologies": "Rust, Tokio, Protobuf"
+            },
+            {
+                "name": "Game Server Matchmaking Core",
+                "description": "Built matchmaking service handling thousands of concurrent sessions. Optimized queue algorithms and region-aware routing for competitive latency targets."
+            }
+        ],
+        "selectedClients": ["Avast", "Cisco Partner", "11 bit studios"]
+    },
+    {
+        "name": "Weronika Jastrzębska",
+        "position": "Android Developer",
+        "keySkills": [
+            "Native Android",
+            "Mobile architecture",
+            "Offline sync",
+            "Play Store releases"
+        ],
+        "businessSkills": [
+            "UX collaboration",
+            "Release notes",
+            "Beta program management"
+        ],
+        "technologySkills": [
+            "Kotlin",
+            "Jetpack Compose",
+            "Coroutines",
+            "Room",
+            "Retrofit",
+            "Firebase",
+            "Gradle"
+        ],
+        "languages": [
+            { "language": "Polish", "level": "Native" },
+            { "language": "English", "level": "B2" }
+        ],
+        "industryExperience": ["FinTech", "Travel", "Food Delivery"],
+        "certificates": ["Associate Android Developer"],
+        "education": "BSc in Computer Science – Lublin University of Technology",
+        "summary": "Weronika develops native Android applications with modern Kotlin and Jetpack Compose. She implements clean architecture patterns, robust offline modes, and analytics-friendly navigation. She has maintained apps with millions of downloads through structured release trains.",
+        "projects": [
+            {
+                "name": "Travel Booking Android App",
+                "description": "Implemented search, booking, and itinerary features with offline cache for travelers. Integrated payment SDKs and deep links from marketing campaigns.",
+                "technologies": "Kotlin, Jetpack Compose, Room, Retrofit"
+            },
+            {
+                "name": "Food Delivery Courier App",
+                "description": "Built courier workflow with route optimization hooks and proof-of-delivery capture. Improved GPS accuracy handling and battery usage on mid-range devices."
+            }
+        ],
+        "selectedClients": ["eSky", "Glovo", "Wolt"]
+    },
+    {
+        "name": "Adrianna Kubiak",
+        "position": "Database Engineer",
+        "keySkills": [
+            "Query optimization",
+            "Schema design",
+            "Replication",
+            "Backup and recovery"
+        ],
+        "businessSkills": [
+            "Capacity planning",
+            "Change management",
+            "On-call support"
+        ],
+        "technologySkills": [
+            "PostgreSQL",
+            "MySQL",
+            "Redis",
+            "Patroni",
+            "pgBouncer",
+            "SQL",
+            "Linux"
+        ],
+        "languages": [
+            { "language": "Polish", "level": "Native" },
+            { "language": "English", "level": "C1" }
+        ],
+        "industryExperience": ["FinTech", "SaaS", "E-commerce"],
+        "certificates": ["PostgreSQL 15 Associate Certification"],
+        "education": "MSc in Computer Science – Poznań University of Technology",
+        "summary": "Adrianna owns PostgreSQL clusters supporting mission-critical applications. She tunes slow queries, designs indexing strategies, and implements HA topologies with automated failover. She partners with developers to prevent schema changes that compromise performance.",
+        "projects": [
+            {
+                "name": "PostgreSQL HA Migration",
+                "description": "Migrated single-node production databases to Patroni-managed clusters with read replicas. Achieved zero-downtime cutover and improved read scalability for reporting workloads.",
+                "technologies": "PostgreSQL, Patroni, pgBouncer, Linux"
+            },
+            {
+                "name": "Query Performance Remediation",
+                "description": "Identified and fixed top twenty slow queries causing checkout timeouts. Introduced monitoring dashboards and review checklist for new database changes."
+            }
+        ],
+        "selectedClients": ["PayPal", "BaseLinker", "Modivo"]
+    },
+    {
+        "name": "Hubert Malinowski",
+        "position": "Network Engineer",
+        "keySkills": [
+            "Network design",
+            "Firewall policy",
+            "VPN connectivity",
+            "Troubleshooting"
+        ],
+        "businessSkills": [
+            "Change windows",
+            "Vendor liaison",
+            "Documentation"
+        ],
+        "technologySkills": [
+            "Cisco",
+            "Palo Alto",
+            "BGP",
+            "OSPF",
+            "VPN",
+            "DNS",
+            "Wireshark"
+        ],
+        "languages": [
+            { "language": "Polish", "level": "Native" },
+            { "language": "English", "level": "B2" }
+        ],
+        "industryExperience": ["Telecom", "Manufacturing", "Healthcare"],
+        "certificates": ["Cisco CCNP Enterprise", "Palo Alto PCNSE"],
+        "education": "BSc in Telecommunications – Warsaw University of Technology",
+        "summary": "Hubert designs and maintains enterprise networks for multi-site organizations. He implements secure segmentation, resilient WAN connectivity, and monitored firewall policies. He resolves complex outages involving routing, DNS, and hybrid cloud connectivity.",
+        "projects": [
+            {
+                "name": "Multi-site WAN Redesign",
+                "description": "Replaced legacy MPLS with SD-WAN across twelve manufacturing plants. Improved application performance for ERP and VoIP while simplifying branch deployments.",
+                "technologies": "Cisco SD-WAN, BGP, Palo Alto"
+            },
+            {
+                "name": "Healthcare Network Segmentation",
+                "description": "Segmented clinical and administrative networks to meet security requirements. Implemented zero-trust access for medical devices and remote clinicians."
+            }
+        ],
+        "selectedClients": ["Netia", "FCA", "Lux Med"]
+    },
+    {
+        "name": "Oliwia Rutkowska",
+        "position": "Product Engineer",
+        "keySkills": [
+            "Product discovery",
+            "Full-stack prototyping",
+            "Metrics-driven iteration",
+            "Customer feedback loops"
+        ],
+        "businessSkills": [
+            "Product analytics",
+            "A/B testing",
+            "Stakeholder communication"
+        ],
+        "technologySkills": [
+            "TypeScript",
+            "Next.js",
+            "Node.js",
+            "PostgreSQL",
+            "Prisma",
+            "Vercel",
+            "Mixpanel"
+        ],
+        "languages": [
+            { "language": "Polish", "level": "Native" },
+            { "language": "English", "level": "C1" }
+        ],
+        "industryExperience": ["SaaS", "Marketplace", "Creator Economy"],
+        "certificates": ["Reforge Product Analytics"],
+        "education": "BSc in Computer Science – University of Lodz",
+        "summary": "Oliwia ships product features end-to-end, from hypothesis and prototype to production metrics review. She combines Next.js full-stack skills with strong product sense, running experiments and iterating based on user behavior. She works closely with design and growth teams.",
+        "projects": [
+            {
+                "name": "Creator Monetization Features",
+                "description": "Launched tipping and subscription modules for a creator platform. Built checkout flows, webhooks, and creator dashboards with near-real-time earnings updates.",
+                "technologies": "Next.js, TypeScript, PostgreSQL, Prisma"
+            },
+            {
+                "name": "Onboarding Experiment Program",
+                "description": "Ran A/B tests on signup flows and activation checklists. Increased week-one retention through guided setup and personalized content recommendations."
+            }
+        ],
+        "selectedClients": ["Patreon Partner", "Useme", "Brand24"]
     }
-  ]
+]

@@ -1,4 +1,4 @@
-import { Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Inject, Injectable, NotFoundException } from '@nestjs/common';
 import {
   CANDIDATE_REPOSITORY,
   ICandidateRepository,
@@ -23,7 +23,7 @@ export class UpdateCandidateUseCase {
 
     const updateResult = candidate.updateProfile(dto);
     if (updateResult.isFailure) {
-      throw new Error(updateResult.error);
+      throw new BadRequestException(updateResult.error);
     }
 
     await this.candidateRepository.save(candidate);

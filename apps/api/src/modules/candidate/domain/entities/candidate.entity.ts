@@ -18,6 +18,7 @@ export interface CandidateProps {
   education?: string;
   summary?: string;
   cvFilePath?: string;
+  profilePhotoUrl?: string;
   skills: Skill[];
   projects: ProjectHistory[];
   languages: Language[];
@@ -35,6 +36,7 @@ export interface CreateCandidateProps {
   availability?: AvailabilityStatus;
   summary?: string;
   cvFilePath?: string;
+  profilePhotoUrl?: string;
   education?: string;
   skills?: Array<{
     name: string;
@@ -44,11 +46,8 @@ export interface CreateCandidateProps {
   }>;
   projects?: Array<{
     name: string;
-    role?: string;
-    client?: string;
-    description?: string;
-    startYear?: number;
-    endYear?: number;
+    description: string;
+    technologies?: string;
   }>;
   languages?: Array<{ language: string; level: string }>;
   industryExperience?: string[];
@@ -111,6 +110,10 @@ export class Candidate extends AggregateRoot<CandidateProps> {
 
   get cvFilePath(): string | undefined {
     return this.props.cvFilePath;
+  }
+
+  get profilePhotoUrl(): string | undefined {
+    return this.props.profilePhotoUrl;
   }
 
   get languages(): Language[] {
@@ -199,6 +202,7 @@ export class Candidate extends AggregateRoot<CandidateProps> {
         education: props.education?.trim(),
         summary: props.summary?.trim(),
         cvFilePath: props.cvFilePath,
+        profilePhotoUrl: props.profilePhotoUrl,
         skills,
         projects,
         languages,
@@ -229,11 +233,29 @@ export class Candidate extends AggregateRoot<CandidateProps> {
   updateProfile(updates: {
     firstName?: string;
     lastName?: string;
+    email?: string;
     title?: string;
     yearsExperience?: number;
     availability?: AvailabilityStatus;
+    education?: string;
     summary?: string;
     cvFilePath?: string;
+    profilePhotoUrl?: string;
+    skills?: Array<{
+      name: string;
+      category?: SkillCategory;
+      level?: number;
+      yearsUsed?: number;
+    }>;
+    projects?: Array<{
+      name: string;
+      description: string;
+      technologies?: string;
+    }>;
+    languages?: Array<{ language: string; level: string }>;
+    industryExperience?: string[];
+    certificates?: string[];
+    selectedClients?: string[];
   }): Result<void> {
     if (updates.firstName !== undefined) {
       const guard = Guard.againstEmpty(updates.firstName, 'firstName');
@@ -244,6 +266,11 @@ export class Candidate extends AggregateRoot<CandidateProps> {
       const guard = Guard.againstEmpty(updates.lastName, 'lastName');
       if (guard.isFailure) return Result.fail(guard.error!);
       this.props.lastName = updates.lastName.trim();
+    }
+    if (updates.email !== undefined) {
+      const emailResult = Email.create(updates.email);
+      if (emailResult.isFailure) return Result.fail(emailResult.error!);
+      this.props.email = emailResult.value!;
     }
     if (updates.title !== undefined) {
       const guard = Guard.againstEmpty(updates.title, 'title');
@@ -261,11 +288,53 @@ export class Candidate extends AggregateRoot<CandidateProps> {
       if (availabilityResult.isFailure) return Result.fail(availabilityResult.error!);
       this.props.availability = availabilityResult.value!;
     }
+    if (updates.education !== undefined) {
+      this.props.education = updates.education.trim() || undefined;
+    }
     if (updates.summary !== undefined) {
       this.props.summary = updates.summary.trim() || undefined;
     }
     if (updates.cvFilePath !== undefined) {
       this.props.cvFilePath = updates.cvFilePath;
+    }
+    if (updates.profilePhotoUrl !== undefined) {
+      this.props.profilePhotoUrl = updates.profilePhotoUrl.trim() || undefined;
+    }
+    if (updates.skills !== undefined) {
+      const skills: Skill[] = [];
+      for (const skillInput of updates.skills) {
+        const skillResult = Skill.create(skillInput);
+        if (skillResult.isFailure) return Result.fail(skillResult.error!);
+        skills.push(skillResult.value!);
+      }
+      this.props.skills = skills;
+    }
+    if (updates.projects !== undefined) {
+      const projects: ProjectHistory[] = [];
+      for (const projectInput of updates.projects) {
+        const projectResult = ProjectHistory.create(projectInput);
+        if (projectResult.isFailure) return Result.fail(projectResult.error!);
+        projects.push(projectResult.value!);
+      }
+      this.props.projects = projects;
+    }
+    if (updates.languages !== undefined) {
+      const languages: Language[] = [];
+      for (const languageInput of updates.languages) {
+        const languageResult = Language.create(languageInput);
+        if (languageResult.isFailure) return Result.fail(languageResult.error!);
+        languages.push(languageResult.value!);
+      }
+      this.props.languages = languages;
+    }
+    if (updates.industryExperience !== undefined) {
+      this.props.industryExperience = [...updates.industryExperience];
+    }
+    if (updates.certificates !== undefined) {
+      this.props.certificates = [...updates.certificates];
+    }
+    if (updates.selectedClients !== undefined) {
+      this.props.selectedClients = [...updates.selectedClients];
     }
 
     return Result.ok();

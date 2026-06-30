@@ -5,6 +5,41 @@ import { ITeamRepository } from '../../domain/repositories/team.repository';
 import { TeamId } from '../../domain/value-objects/team-id.vo';
 import { TeamPrismaMapper } from './team.prisma-mapper';
 
+const memberInclude = {
+  skills: true,
+  projects: true,
+  languages: true,
+  industries: true,
+  certificates: true,
+  selectedClients: true,
+} as const;
+
+function memberCreateInput(m: ReturnType<typeof TeamPrismaMapper.toPersistence>['members'][number]) {
+  return {
+    id: m.id,
+    sourceCandidateId: m.sourceCandidateId,
+    firstName: m.firstName,
+    lastName: m.lastName,
+    email: m.email,
+    title: m.title,
+    yearsExperience: m.yearsExperience,
+    availability: m.availability as never,
+    education: m.education,
+    summary: m.summary,
+    cvFilePath: m.cvFilePath,
+    profilePhotoUrl: m.profilePhotoUrl,
+    role: m.role,
+    isLead: m.isLead,
+    joinedAt: m.joinedAt,
+    skills: { create: m.skills },
+    projects: { create: m.projects },
+    languages: { create: m.languages },
+    industries: { create: m.industries },
+    certificates: { create: m.certificates },
+    selectedClients: { create: m.selectedClients },
+  };
+}
+
 @Injectable()
 export class PrismaTeamRepository implements ITeamRepository {
   constructor(private readonly prisma: PrismaService) {}
@@ -20,13 +55,7 @@ export class PrismaTeamRepository implements ITeamRepository {
         description: data.description,
         status: data.status as never,
         members: {
-          create: data.members.map((m) => ({
-            id: m.id,
-            candidateId: m.candidateId,
-            role: m.role,
-            isLead: m.isLead,
-            joinedAt: m.joinedAt,
-          })),
+          create: data.members.map(memberCreateInput),
         },
       },
       update: {
@@ -35,13 +64,7 @@ export class PrismaTeamRepository implements ITeamRepository {
         status: data.status as never,
         members: {
           deleteMany: {},
-          create: data.members.map((m) => ({
-            id: m.id,
-            candidateId: m.candidateId,
-            role: m.role,
-            isLead: m.isLead,
-            joinedAt: m.joinedAt,
-          })),
+          create: data.members.map(memberCreateInput),
         },
       },
     });
@@ -50,7 +73,11 @@ export class PrismaTeamRepository implements ITeamRepository {
   async findById(id: TeamId): Promise<Team | null> {
     const record = await this.prisma.team.findUnique({
       where: { id: id.toString() },
-      include: { members: true },
+      include: {
+        members: {
+          include: memberInclude,
+        },
+      },
     });
     if (!record) return null;
     return TeamPrismaMapper.toDomain(record);
@@ -58,7 +85,11 @@ export class PrismaTeamRepository implements ITeamRepository {
 
   async findAll(): Promise<Team[]> {
     const records = await this.prisma.team.findMany({
-      include: { members: true },
+      include: {
+        members: {
+          include: memberInclude,
+        },
+      },
       orderBy: { name: 'asc' },
     });
     return records.map((r) => TeamPrismaMapper.toDomain(r));

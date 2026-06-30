@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { PrismaClient, SkillCategory } from '@prisma/client';
+import { backfillProfilePhotos } from './backfill-profile-photos';
 
 const prisma = new PrismaClient();
 
@@ -16,9 +17,9 @@ interface TestCandidateJson {
   education: string;
   summary: string;
   projects: Array<{
-    type: string;
+    name: string;
     description: string;
-    role: string;
+    technologies?: string;
   }>;
   selectedClients: string[];
 }
@@ -29,6 +30,26 @@ const YEARS_BY_NAME: Record<string, number> = {
   'Tomasz Zieliński': 6,
   'Karolina Mazur': 5,
   'Michał Kaczmarek': 7,
+  'Jakub Wiśniewski': 5,
+  'Ewa Dąbrowska': 11,
+  'Marcin Lewandowski': 6,
+  'Agnieszka Wójcik': 5,
+  'Łukasz Kamiński': 8,
+  'Natalia Zając': 6,
+  'Katarzyna Szymańska': 7,
+  'Bartosz Król': 4,
+  'Magdalena Piotrowska': 5,
+  'Rafał Jankowski': 9,
+  'Joanna Grabowska': 10,
+  'Damian Kowalski': 7,
+  'Aleksandra Nowicka': 8,
+  'Szymon Walczak': 12,
+  'Monika Cieślak': 5,
+  'Filip Górski': 4,
+  'Weronika Jastrzębska': 5,
+  'Adrianna Kubiak': 8,
+  'Hubert Malinowski': 10,
+  'Oliwia Rutkowska': 4,
 };
 
 function splitName(fullName: string): { firstName: string; lastName: string } {
@@ -93,9 +114,9 @@ async function seedCandidates(records: TestCandidateJson[]) {
         projects: {
           deleteMany: {},
           create: record.projects.map((project) => ({
-            name: project.type,
-            role: project.role,
+            name: project.name,
             description: project.description,
+            technologies: project.technologies ?? null,
           })),
         },
         languages: {
@@ -142,9 +163,9 @@ async function seedCandidates(records: TestCandidateJson[]) {
         },
         projects: {
           create: record.projects.map((project) => ({
-            name: project.type,
-            role: project.role,
+            name: project.name,
             description: project.description,
+            technologies: project.technologies ?? null,
           })),
         },
         languages: {
@@ -169,9 +190,70 @@ async function seedCandidates(records: TestCandidateJson[]) {
   return candidateIds;
 }
 
+async function buildMemberSnapshotFromCandidate(candidateId: string) {
+  const candidate = await prisma.candidate.findUniqueOrThrow({
+    where: { id: candidateId },
+    include: {
+      skills: true,
+      projects: true,
+      languages: true,
+      industries: true,
+      certificates: true,
+      selectedClients: true,
+    },
+  });
+
+  return {
+    sourceCandidateId: candidate.id,
+    firstName: candidate.firstName,
+    lastName: candidate.lastName,
+    email: candidate.email,
+    title: candidate.title,
+    yearsExperience: candidate.yearsExperience,
+    availability: candidate.availability,
+    education: candidate.education,
+    summary: candidate.summary,
+    cvFilePath: candidate.cvFilePath,
+    profilePhotoUrl: candidate.profilePhotoUrl,
+    skills: {
+      create: candidate.skills.map((s) => ({
+        name: s.name,
+        category: s.category,
+        level: s.level,
+        yearsUsed: s.yearsUsed,
+      })),
+    },
+    projects: {
+      create: candidate.projects.map((p) => ({
+        name: p.name,
+        description: p.description,
+        technologies: p.technologies,
+      })),
+    },
+    languages: {
+      create: candidate.languages.map((l) => ({
+        language: l.language,
+        level: l.level,
+      })),
+    },
+    industries: {
+      create: candidate.industries.map((i) => ({ name: i.name })),
+    },
+    certificates: {
+      create: candidate.certificates.map((c) => ({ name: c.name })),
+    },
+    selectedClients: {
+      create: candidate.selectedClients.map((c) => ({ name: c.name })),
+    },
+  };
+}
+
 async function seedDemoTeam(candidateIds: string[]) {
   const annaId = candidateIds[0];
   const tomaszId = candidateIds[2];
+
+  const annaSnapshot = await buildMemberSnapshotFromCandidate(annaId);
+  const tomaszSnapshot = await buildMemberSnapshotFromCandidate(tomaszId);
 
   const team = await prisma.team.upsert({
     where: { id: '00000000-0000-4000-8000-000000000001' },
@@ -183,12 +265,12 @@ async function seedDemoTeam(candidateIds: string[]) {
         deleteMany: {},
         create: [
           {
-            candidateId: annaId,
+            ...annaSnapshot,
             role: 'Tech Lead',
             isLead: true,
           },
           {
-            candidateId: tomaszId,
+            ...tomaszSnapshot,
             role: 'DevOps Engineer',
             isLead: false,
           },
@@ -203,12 +285,12 @@ async function seedDemoTeam(candidateIds: string[]) {
       members: {
         create: [
           {
-            candidateId: annaId,
+            ...annaSnapshot,
             role: 'Tech Lead',
             isLead: true,
           },
           {
-            candidateId: tomaszId,
+            ...tomaszSnapshot,
             role: 'DevOps Engineer',
             isLead: false,
           },
@@ -224,6 +306,7 @@ async function main() {
   const records = loadTestCandidates();
   const candidateIds = await seedCandidates(records);
   await seedDemoTeam(candidateIds);
+  await backfillProfilePhotos();
   console.log(`Seed complete: ${candidateIds.length} candidates`);
 }
 

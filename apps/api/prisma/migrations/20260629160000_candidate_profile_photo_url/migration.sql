@@ -1,0 +1,2 @@
+ALTER TABLE "Candidate" ADD COLUMN IF NOT EXISTS "profilePhotoUrl" TEXT;
+ALTER TABLE "TeamMember" ADD COLUMN IF NOT EXISTS "profilePhotoUrl" TEXT;

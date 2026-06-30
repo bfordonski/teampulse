@@ -11,7 +11,8 @@
     "lint": "tsc --noEmit -p tsconfig.json",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
-    "prisma:seed": "tsx prisma/seed.ts"
+    "prisma:seed": "tsx prisma/seed.ts",
+    "prisma:backfill-photos": "tsx prisma/backfill-profile-photos.ts"
   },
   "dependencies": {
     "@consulting/shared-kernel": "*",

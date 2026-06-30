@@ -11,8 +11,8 @@ import {
   Min,
   ValidateNested,
 } from 'class-validator';
-import { AvailabilityStatus } from '../../domain/value-objects/availability.vo';
-import { SkillCategory } from '../../domain/value-objects/skill-category.vo';
+import { AvailabilityStatus } from '../../../candidate/domain/value-objects/availability.vo';
+import { SkillCategory } from '../../../candidate/domain/value-objects/skill-category.vo';
 
 class SkillDto {
   @IsString()
@@ -52,21 +52,27 @@ class ProjectDto {
   technologies?: string;
 }
 
-export class CreateCandidateDto {
+export class UpdateTeamMemberProfileDto {
+  @IsOptional()
   @IsString()
-  firstName!: string;
+  firstName?: string;
 
+  @IsOptional()
   @IsString()
-  lastName!: string;
+  lastName?: string;
 
+  @IsOptional()
   @IsEmail()
-  email!: string;
+  email?: string;
 
+  @IsOptional()
   @IsString()
-  title!: string;
+  title?: string;
 
+  @IsOptional()
   @Min(0)
-  yearsExperience!: number;
+  @IsInt()
+  yearsExperience?: number;
 
   @IsOptional()
   @IsEnum(AvailabilityStatus)

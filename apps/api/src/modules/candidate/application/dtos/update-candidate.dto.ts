@@ -1,5 +1,56 @@
-import { IsEnum, IsInt, IsOptional, IsString, Min } from 'class-validator';
+import { Type } from 'class-transformer';
+import {
+  IsArray,
+  IsEmail,
+  IsEnum,
+  IsInt,
+  IsOptional,
+  IsString,
+  IsUrl,
+  Max,
+  Min,
+  ValidateNested,
+} from 'class-validator';
 import { AvailabilityStatus } from '../../domain/value-objects/availability.vo';
+import { SkillCategory } from '../../domain/value-objects/skill-category.vo';
+
+class SkillDto {
+  @IsString()
+  name!: string;
+
+  @IsOptional()
+  @IsEnum(SkillCategory)
+  category?: SkillCategory;
+
+  @IsOptional()
+  @Min(1)
+  @Max(5)
+  level?: number;
+
+  @IsOptional()
+  @Min(0)
+  yearsUsed?: number;
+}
+
+class LanguageDto {
+  @IsString()
+  language!: string;
+
+  @IsString()
+  level!: string;
+}
+
+class ProjectDto {
+  @IsString()
+  name!: string;
+
+  @IsString()
+  description!: string;
+
+  @IsOptional()
+  @IsString()
+  technologies?: string;
+}
 
 export class UpdateCandidateDto {
   @IsOptional()
@@ -9,6 +60,10 @@ export class UpdateCandidateDto {
   @IsOptional()
   @IsString()
   lastName?: string;
+
+  @IsOptional()
+  @IsEmail()
+  email?: string;
 
   @IsOptional()
   @IsString()
@@ -25,9 +80,50 @@ export class UpdateCandidateDto {
 
   @IsOptional()
   @IsString()
+  education?: string;
+
+  @IsOptional()
+  @IsString()
   summary?: string;
 
   @IsOptional()
   @IsString()
   cvFilePath?: string;
+
+  @IsOptional()
+  @IsUrl()
+  profilePhotoUrl?: string;
+
+  @IsOptional()
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => SkillDto)
+  skills?: SkillDto[];
+
+  @IsOptional()
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => ProjectDto)
+  projects?: ProjectDto[];
+
+  @IsOptional()
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => LanguageDto)
+  languages?: LanguageDto[];
+
+  @IsOptional()
+  @IsArray()
+  @IsString({ each: true })
+  industryExperience?: string[];
+
+  @IsOptional()
+  @IsArray()
+  @IsString({ each: true })
+  certificates?: string[];
+
+  @IsOptional()
+  @IsArray()
+  @IsString({ each: true })
+  selectedClients?: string[];
 }

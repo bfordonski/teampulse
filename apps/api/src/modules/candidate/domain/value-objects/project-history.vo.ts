@@ -2,11 +2,8 @@ import { Guard, Result, ValueObject } from '@consulting/shared-kernel';
 
 export interface ProjectHistoryProps {
   name: string;
-  role?: string;
-  client?: string;
-  description?: string;
-  startYear?: number;
-  endYear?: number;
+  description: string;
+  technologies?: string;
 }
 
 export class ProjectHistory extends ValueObject<ProjectHistoryProps> {
@@ -18,34 +15,27 @@ export class ProjectHistory extends ValueObject<ProjectHistoryProps> {
     return this.props.name;
   }
 
-  get role(): string | undefined {
-    return this.props.role;
-  }
-
-  get client(): string | undefined {
-    return this.props.client;
-  }
-
-  get description(): string | undefined {
+  get description(): string {
     return this.props.description;
   }
 
-  get startYear(): number | undefined {
-    return this.props.startYear;
-  }
-
-  get endYear(): number | undefined {
-    return this.props.endYear;
+  get technologies(): string | undefined {
+    return this.props.technologies;
   }
 
   static create(props: ProjectHistoryProps): Result<ProjectHistory> {
-    const guard = Guard.againstEmpty(props.name, 'project name');
+    const guard = Guard.combine([
+      Guard.againstEmpty(props.name, 'project name'),
+      Guard.againstEmpty(props.description, 'project description'),
+    ]);
     if (guard.isFailure) return Result.fail(guard.error!);
 
-    if (props.startYear && props.endYear && props.startYear > props.endYear) {
-      return Result.fail('Project start year cannot be after end year');
-    }
-
-    return Result.ok(new ProjectHistory({ ...props, name: props.name.trim() }));
+    return Result.ok(
+      new ProjectHistory({
+        name: props.name.trim(),
+        description: props.description.trim(),
+        technologies: props.technologies?.trim() || undefined,
+      }),
+    );
   }
 }

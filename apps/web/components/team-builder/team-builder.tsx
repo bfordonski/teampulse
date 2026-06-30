@@ -9,18 +9,23 @@ import {
   type DragEndEvent,
   type DragStartEvent,
 } from '@dnd-kit/core';
-import { Loader2, Save, Sparkles, Users } from 'lucide-react';
+import { Loader2, PanelRightOpen, Pencil, Save, Search, Sparkles, UserMinus, Users, X } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { CandidatePanel } from '@/components/candidates/candidate-panel';
+import { CandidatePoolRow } from '@/components/candidates/candidate-pool-row';
+import { CandidateProfilePreview } from '@/components/candidates/candidate-profile-preview';
+import { CandidatePoolDrawer } from '@/components/team-builder/candidate-pool-drawer';
 import { DropColumn } from '@/components/team-builder/drop-column';
 import { RoleSelect } from '@/components/team-builder/role-select';
+import { TeamMemberProfileForm } from '@/components/team-builder/team-member-profile-form';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { api } from '@/lib/api';
+import { candidateMatchesSearch } from '@/lib/candidate-search';
 import {
   DROP_ZONE_POOL,
   DROP_ZONE_TEAM,
@@ -28,7 +33,7 @@ import {
   poolDragId,
   teamDragId,
 } from '@/lib/constants';
-import type { Candidate, Team } from '@/lib/types';
+import type { Candidate, Team, TeamMember, UpdateTeamMemberProfileInput } from '@/lib/types';
 
 interface TeamBuilderProps {
   teamId?: string;
@@ -45,6 +50,11 @@ export function TeamBuilder({ teamId: initialTeamId }: TeamBuilderProps) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [activeDragId, setActiveDragId] = useState<string | null>(null);
+  const [editingMember, setEditingMember] = useState<TeamMember | null>(null);
+  const [poolSearch, setPoolSearch] = useState('');
+  const [previewCandidate, setPreviewCandidate] = useState<Candidate | null>(null);
+  const [addingFromPreview, setAddingFromPreview] = useState(false);
+  const [poolOpen, setPoolOpen] = useState(false);
 
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 8 } }),
@@ -74,35 +84,37 @@ export function TeamBuilder({ teamId: initialTeamId }: TeamBuilderProps) {
     load();
   }, [load]);
 
-  const memberIds = useMemo(
-    () => new Set(team?.members.map((m) => m.candidateId) ?? []),
+  const memberSourceIds = useMemo(
+    () =>
+      new Set(
+        team?.members.map((m) => m.sourceCandidateId ?? m.candidateId) ?? [],
+      ),
     [team],
   );
 
-  const teamCandidates = useMemo(
-    () =>
-      (team?.members ?? [])
-        .map((m) => {
-          const c = candidates.find((x) => x.id === m.candidateId);
-          return c ? { candidate: c, member: m } : null;
-        })
-        .filter(Boolean) as Array<{
-        candidate: Candidate;
-        member: Team['members'][0];
-      }>,
-    [team, candidates],
-  );
+  const teamMembers = useMemo(() => team?.members ?? [], [team]);
 
   const poolCandidates = useMemo(
-    () => candidates.filter((c) => !memberIds.has(c.id)),
-    [candidates, memberIds],
+    () => candidates.filter((c) => !memberSourceIds.has(c.id)),
+    [candidates, memberSourceIds],
+  );
+
+  const filteredPoolCandidates = useMemo(
+    () => poolCandidates.filter((c) => candidateMatchesSearch(c, poolSearch)),
+    [poolCandidates, poolSearch],
   );
 
   const activeCandidate = useMemo(() => {
     if (!activeDragId) return null;
-    const { candidateId } = parseDragId(activeDragId);
+    const { zone, candidateId } = parseDragId(activeDragId);
+    if (zone === 'team') {
+      const member = teamMembers.find(
+        (m) => (m.sourceCandidateId ?? m.candidateId) === candidateId,
+      );
+      return member?.profile ?? null;
+    }
     return candidates.find((c) => c.id === candidateId) ?? null;
-  }, [activeDragId, candidates]);
+  }, [activeDragId, candidates, teamMembers]);
 
   const ensureTeam = async (): Promise<string> => {
     if (teamId) return teamId;
@@ -136,26 +148,28 @@ export function TeamBuilder({ teamId: initialTeamId }: TeamBuilderProps) {
     }
   };
 
-  const addToTeam = async (candidateId: string, role = 'Developer') => {
+  const addToTeam = async (candidateId: string, role = 'Developer'): Promise<boolean> => {
     setBusy(true);
     setError(null);
     try {
       const id = await ensureTeam();
       const updated = await api.addMember(id, candidateId, role);
       setTeam(updated);
+      return true;
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Failed to add member');
+      return false;
     } finally {
       setBusy(false);
     }
   };
 
-  const removeFromTeam = async (candidateId: string) => {
+  const removeFromTeam = async (sourceCandidateId: string) => {
     if (!teamId) return;
     setBusy(true);
     setError(null);
     try {
-      const updated = await api.removeMember(teamId, candidateId);
+      const updated = await api.removeMember(teamId, sourceCandidateId);
       setTeam(updated);
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Failed to remove member');
@@ -164,15 +178,33 @@ export function TeamBuilder({ teamId: initialTeamId }: TeamBuilderProps) {
     }
   };
 
-  const changeRole = async (candidateId: string, role: string) => {
+  const changeRole = async (sourceCandidateId: string, role: string) => {
     if (!teamId) return;
     setBusy(true);
     setError(null);
     try {
-      const updated = await api.assignRole(teamId, candidateId, role);
+      const updated = await api.assignRole(teamId, sourceCandidateId, role);
       setTeam(updated);
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Failed to update role');
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const saveMemberProfile = async (
+    memberId: string,
+    data: UpdateTeamMemberProfileInput,
+  ) => {
+    if (!teamId) return;
+    setBusy(true);
+    setError(null);
+    try {
+      const updated = await api.updateMemberProfile(teamId, memberId, data);
+      setTeam(updated);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Failed to update profile');
+      throw e;
     } finally {
       setBusy(false);
     }
@@ -212,6 +244,22 @@ export function TeamBuilder({ teamId: initialTeamId }: TeamBuilderProps) {
       setBusy(false);
     }
   };
+
+  const handleAddFromPreview = async () => {
+    if (!previewCandidate) return;
+    setAddingFromPreview(true);
+    try {
+      const ok = await addToTeam(previewCandidate.id);
+      if (ok) {
+        setPreviewCandidate(null);
+        setPoolOpen(false);
+      }
+    } finally {
+      setAddingFromPreview(false);
+    }
+  };
+
+  const teamArchived = team?.status === 'ARCHIVED';
 
   if (loading) {
     return (
@@ -309,82 +357,216 @@ export function TeamBuilder({ teamId: initialTeamId }: TeamBuilderProps) {
         )}
 
         <p className="text-center text-sm text-muted-foreground">
-          Drag candidates between columns to add or remove team members. Use the grip handle on each
-          card.
+          Build your team below. Open the candidate pool to browse, preview profiles, and drag
+          people in — each member keeps an independent profile copy.
         </p>
 
-        <div className="grid gap-8 lg:grid-cols-2">
-          <DropColumn
-            id={DROP_ZONE_TEAM}
-            title="Team members"
-            description="People assigned to this team"
-            count={teamCandidates.length}
-            accent="team"
-          >
-            {teamCandidates.length === 0 ? (
-              <div className="flex flex-1 flex-col items-center justify-center gap-2 py-12 text-center text-sm text-muted-foreground">
-                <Users className="h-10 w-10 opacity-30" />
-                <p>Drop candidates here to build your team</p>
-              </div>
-            ) : (
-              teamCandidates.map(({ candidate, member }) => (
+        <DropColumn
+          id={DROP_ZONE_TEAM}
+          title="Team members"
+          description="People assigned to this team (profile copies)"
+          count={teamMembers.length}
+          accent="team"
+          layout={teamMembers.length > 0 ? 'grid' : 'list'}
+          headerAction={
+            <Button
+              type="button"
+              variant={poolOpen ? 'outline' : 'default'}
+              className="shrink-0 gap-2"
+              onClick={() => setPoolOpen((open) => !open)}
+            >
+              <PanelRightOpen className="h-4 w-4" />
+              {poolOpen ? 'Pool open' : 'Browse candidates'}
+              <Badge variant="secondary" className="ml-0.5 bg-background/80">
+                {poolCandidates.length}
+              </Badge>
+            </Button>
+          }
+        >
+          {teamMembers.length === 0 ? (
+            <div className="col-span-full flex flex-1 flex-col items-center justify-center gap-3 py-12 text-center text-sm text-muted-foreground">
+              <Users className="h-10 w-10 opacity-30" />
+              <p>No team members yet.</p>
+              <Button type="button" variant="outline" onClick={() => setPoolOpen(true)}>
+                <PanelRightOpen className="h-4 w-4" />
+                Browse candidates
+              </Button>
+            </div>
+          ) : (
+            teamMembers.map((member) => {
+              const sourceId = member.sourceCandidateId ?? member.candidateId;
+              return (
                 <CandidatePanel
-                  key={candidate.id}
-                  candidate={candidate}
-                  dragId={teamDragId(candidate.id)}
-                  isDragging={activeDragId === teamDragId(candidate.id)}
+                  key={member.id}
+                  candidate={member.profile}
+                  dragId={teamDragId(sourceId)}
+                  isDragging={activeDragId === teamDragId(sourceId)}
                   footer={
-                    <div className="mt-3 flex items-center gap-2">
-                      <span className="text-xs text-muted-foreground">Role</span>
-                      <div className="w-40">
-                        <RoleSelect
-                          value={member.role}
-                          onChange={(role) => changeRole(candidate.id, role)}
-                          disabled={busy || team?.status === 'ARCHIVED'}
-                        />
+                    <div className="mt-3 space-y-2">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <Badge variant="secondary" className="text-xs">
+                          Team copy
+                        </Badge>
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          className="h-7 gap-1 px-2 text-xs"
+                          onClick={() => setEditingMember(member)}
+                          disabled={busy || teamArchived}
+                        >
+                          <Pencil className="h-3 w-3" />
+                          Edit
+                        </Button>
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          className="h-7 gap-1 px-2 text-xs text-destructive hover:text-destructive"
+                          onClick={() => removeFromTeam(sourceId)}
+                          disabled={busy || teamArchived || !teamId}
+                        >
+                          <UserMinus className="h-3 w-3" />
+                          Remove
+                        </Button>
                       </div>
-                      {member.isLead && (
-                        <Badge variant="default">Lead</Badge>
-                      )}
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="text-xs text-muted-foreground">Role</span>
+                        <div className="w-40">
+                          <RoleSelect
+                            value={member.role}
+                            onChange={(role) => changeRole(sourceId, role)}
+                            disabled={busy || teamArchived}
+                          />
+                        </div>
+                        {member.isLead && <Badge variant="default">Lead</Badge>}
+                      </div>
                     </div>
                   }
                 />
-              ))
-            )}
-          </DropColumn>
+              );
+            })
+          )}
+        </DropColumn>
 
+        <CandidatePoolDrawer
+          open={poolOpen}
+          onClose={() => setPoolOpen(false)}
+          count={poolCandidates.length}
+        >
           <DropColumn
             id={DROP_ZONE_POOL}
             title="Available candidates"
             description="Drag onto the team to assign"
             count={poolCandidates.length}
             accent="pool"
+            scrollable
+            compact
+            toolbar={
+              <div className="mb-3 space-y-2">
+                <div className="relative">
+                  <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+                  <Input
+                    value={poolSearch}
+                    onChange={(e) => setPoolSearch(e.target.value)}
+                    placeholder="Search available candidates…"
+                    className="pl-9 pr-9"
+                    aria-label="Search available candidates"
+                  />
+                  {poolSearch && (
+                    <button
+                      type="button"
+                      onClick={() => setPoolSearch('')}
+                      className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1 text-muted-foreground hover:text-foreground"
+                      aria-label="Clear pool search"
+                    >
+                      <X className="h-4 w-4" />
+                    </button>
+                  )}
+                </div>
+                {poolSearch.trim() && (
+                  <p className="text-xs text-muted-foreground">
+                    Showing {filteredPoolCandidates.length} of {poolCandidates.length} available
+                  </p>
+                )}
+              </div>
+            }
           >
             {poolCandidates.length === 0 ? (
               <div className="flex flex-1 flex-col items-center justify-center py-12 text-center text-sm text-muted-foreground">
                 <p>All candidates are on this team</p>
               </div>
+            ) : filteredPoolCandidates.length === 0 ? (
+              <div className="flex flex-1 flex-col items-center justify-center py-12 text-center text-sm text-muted-foreground">
+                <p>No candidates match your search.</p>
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  className="mt-3"
+                  onClick={() => setPoolSearch('')}
+                >
+                  Clear search
+                </Button>
+              </div>
             ) : (
-              poolCandidates.map((candidate) => (
-                <CandidatePanel
+              filteredPoolCandidates.map((candidate) => (
+                <CandidatePoolRow
                   key={candidate.id}
                   candidate={candidate}
                   dragId={poolDragId(candidate.id)}
                   isDragging={activeDragId === poolDragId(candidate.id)}
+                  onPreview={() => setPreviewCandidate(candidate)}
                 />
               ))
             )}
           </DropColumn>
-        </div>
+        </CandidatePoolDrawer>
+
+        {!poolOpen && poolCandidates.length > 0 && (
+          <Button
+            type="button"
+            className="fixed bottom-6 right-6 z-20 gap-2 shadow-lg md:hidden"
+            onClick={() => setPoolOpen(true)}
+          >
+            <PanelRightOpen className="h-4 w-4" />
+            Candidates ({poolCandidates.length})
+          </Button>
+        )}
       </div>
+
+      {previewCandidate && (
+        <CandidateProfilePreview
+          candidate={previewCandidate}
+          open
+          onClose={() => setPreviewCandidate(null)}
+          onAddToTeam={handleAddFromPreview}
+          addDisabled={busy || teamArchived || addingFromPreview}
+          adding={addingFromPreview}
+        />
+      )}
+
+      {editingMember && (
+        <TeamMemberProfileForm
+          member={editingMember}
+          open={Boolean(editingMember)}
+          onClose={() => setEditingMember(null)}
+          onSave={saveMemberProfile}
+          disabled={busy || team?.status === 'ARCHIVED'}
+        />
+      )}
 
       <DragOverlay dropAnimation={null}>
         {activeCandidate ? (
-          <div className="w-[320px] rotate-2 opacity-95 shadow-panel-hover">
-            <CandidatePanel
-              candidate={activeCandidate}
-              dragId="overlay"
-            />
+          <div className="w-[280px] rotate-2 opacity-95 shadow-panel-hover">
+            {activeDragId && parseDragId(activeDragId).zone === 'team' ? (
+              <CandidatePanel candidate={activeCandidate} dragId="overlay" />
+            ) : (
+              <CandidatePoolRow
+                candidate={activeCandidate}
+                dragId="overlay"
+              />
+            )}
           </div>
         ) : null}
       </DragOverlay>

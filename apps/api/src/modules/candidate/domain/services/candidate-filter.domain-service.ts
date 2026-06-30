@@ -30,20 +30,26 @@ export class CandidateFilterDomainService {
     }
 
     if (criteria.search) {
-      const term = criteria.search.toLowerCase();
-      const haystack = [
-        candidate.fullName,
-        candidate.title,
-        candidate.email.value,
-        candidate.education ?? '',
-        ...candidate.skills.map((s) => s.name),
-        ...candidate.industryExperience,
-        ...candidate.certificates,
-        ...candidate.selectedClients,
-      ]
-        .join(' ')
-        .toLowerCase();
-      if (!haystack.includes(term)) return false;
+      const tokens = criteria.search
+        .trim()
+        .toLowerCase()
+        .split(/\s+/)
+        .filter(Boolean);
+      if (tokens.length > 0) {
+        const haystack = [
+          candidate.fullName,
+          candidate.title,
+          candidate.email.value,
+          candidate.education ?? '',
+          ...candidate.skills.map((s) => s.name),
+          ...candidate.industryExperience,
+          ...candidate.certificates,
+          ...candidate.selectedClients,
+        ]
+          .join(' ')
+          .toLowerCase();
+        if (!tokens.every((token) => haystack.includes(token))) return false;
+      }
     }
 
     return true;
